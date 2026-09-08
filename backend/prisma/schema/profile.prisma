@@ -1,0 +1,16 @@
+model Profile {
+    profileId String @id @default(cuid())
+
+    avatar      String
+    profileName String @map("profile_name")
+
+    subscribers Int @default(0)
+
+    videos   Video[]
+    comments Comment[]
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("profiles")
+}
