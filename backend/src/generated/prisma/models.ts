@@ -8,7 +8,10 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Channel'
 export type * from './models/Comment'
 export type * from './models/Profile'
+export type * from './models/Reaction'
+export type * from './models/Subscription'
 export type * from './models/Video'
 export type * from './commonInputTypes'

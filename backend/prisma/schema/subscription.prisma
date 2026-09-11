@@ -1,0 +1,23 @@
+enum Notifications {
+    ALL
+    PERSONALIZED
+    NONE
+}
+
+model Subscription {
+    subscriptionId String @id @default(cuid()) @map("subscription_id")
+
+    notifications Notifications @default(ALL) @map("notifications")
+
+    profileId String  @map("profile_id")
+    profile   Profile @relation(fields: [profileId], references: [profileId], onDelete: Cascade)
+
+    channelId String  @map("channel_id")
+    channel   Channel @relation(fields: [channelId], references: [channelId], onDelete: Cascade)
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@unique([profileId, channelId])
+    @@map("subscriptions")
+}

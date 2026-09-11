@@ -51,8 +51,11 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Channel: 'Channel',
   Comment: 'Comment',
   Profile: 'Profile',
+  Reaction: 'Reaction',
+  Subscription: 'Subscription',
   Video: 'Video'
 } as const
 
@@ -72,11 +75,24 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const ChannelScalarFieldEnum = {
+  channelId: 'channelId',
+  channelName: 'channelName',
+  userName: 'userName',
+  subscribers: 'subscribers',
+  description: 'description',
+  logo: 'logo',
+  ownerId: 'ownerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ChannelScalarFieldEnum = (typeof ChannelScalarFieldEnum)[keyof typeof ChannelScalarFieldEnum]
+
+
 export const CommentScalarFieldEnum = {
   commentId: 'commentId',
   text: 'text',
-  likes: 'likes',
-  dislikes: 'dislikes',
   writerId: 'writerId',
   videoId: 'videoId',
   createdAt: 'createdAt',
@@ -90,12 +106,35 @@ export const ProfileScalarFieldEnum = {
   profileId: 'profileId',
   avatar: 'avatar',
   profileName: 'profileName',
-  subscribers: 'subscribers',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
+
+
+export const ReactionScalarFieldEnum = {
+  reactionId: 'reactionId',
+  reactionType: 'reactionType',
+  profileId: 'profileId',
+  videoId: 'videoId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ReactionScalarFieldEnum = (typeof ReactionScalarFieldEnum)[keyof typeof ReactionScalarFieldEnum]
+
+
+export const SubscriptionScalarFieldEnum = {
+  subscriptionId: 'subscriptionId',
+  notifications: 'notifications',
+  profileId: 'profileId',
+  channelId: 'channelId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SubscriptionScalarFieldEnum = (typeof SubscriptionScalarFieldEnum)[keyof typeof SubscriptionScalarFieldEnum]
 
 
 export const VideoScalarFieldEnum = {
@@ -104,8 +143,6 @@ export const VideoScalarFieldEnum = {
   title: 'title',
   description: 'description',
   released: 'released',
-  likes: 'likes',
-  dislikes: 'dislikes',
   views: 'views',
   creatorId: 'creatorId',
   createdAt: 'createdAt',

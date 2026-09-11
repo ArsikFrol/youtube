@@ -1,0 +1,21 @@
+enum ReactionType {
+    LIKE
+    DISLIKE
+}
+
+model Reaction {
+    reactionId   String       @id @default(cuid()) @map("reaction_id")
+    reactionType ReactionType
+
+    profileId String  @map("profile_id")
+    profile   Profile @relation(fields: [profileId], references: [profileId])
+
+    videoId String @map("video_id")
+    video   Video  @relation(fields: [videoId], references: [videoId])
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@unique([profileId, videoId])
+    @@map("reactions")
+}

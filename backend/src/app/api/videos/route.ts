@@ -25,10 +25,12 @@ export async function GET(req: NextRequest) {
             include: {
                 creator: {
                     select: {
-                        avatar: true,
+                        channelId: true,
                         subscribers: true,
-                        profileName: true,
-                        profileId: true,
+                        channelName: true,
+                        description: true,
+                        logo: true,
+                        userName: true,
                         createdAt: true
                     }
                 }

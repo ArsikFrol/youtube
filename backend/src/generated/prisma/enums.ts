@@ -9,7 +9,18 @@
 * 🟢 You can import this file directly.
 */
 
+export const ReactionType = {
+  LIKE: 'LIKE',
+  DISLIKE: 'DISLIKE'
+} as const
+
+export type ReactionType = (typeof ReactionType)[keyof typeof ReactionType]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const Notifications = {
+  ALL: 'ALL',
+  PERSONALIZED: 'PERSONALIZED',
+  NONE: 'NONE'
+} as const
+
+export type Notifications = (typeof Notifications)[keyof typeof Notifications]

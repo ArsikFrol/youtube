@@ -20,27 +20,13 @@ export type CommentModel = runtime.Types.Result.DefaultSelection<Prisma.$Comment
 
 export type AggregateComment = {
   _count: CommentCountAggregateOutputType | null
-  _avg: CommentAvgAggregateOutputType | null
-  _sum: CommentSumAggregateOutputType | null
   _min: CommentMinAggregateOutputType | null
   _max: CommentMaxAggregateOutputType | null
-}
-
-export type CommentAvgAggregateOutputType = {
-  likes: number | null
-  dislikes: number | null
-}
-
-export type CommentSumAggregateOutputType = {
-  likes: number | null
-  dislikes: number | null
 }
 
 export type CommentMinAggregateOutputType = {
   commentId: string | null
   text: string | null
-  likes: number | null
-  dislikes: number | null
   writerId: string | null
   videoId: string | null
   createdAt: Date | null
@@ -50,8 +36,6 @@ export type CommentMinAggregateOutputType = {
 export type CommentMaxAggregateOutputType = {
   commentId: string | null
   text: string | null
-  likes: number | null
-  dislikes: number | null
   writerId: string | null
   videoId: string | null
   createdAt: Date | null
@@ -61,8 +45,6 @@ export type CommentMaxAggregateOutputType = {
 export type CommentCountAggregateOutputType = {
   commentId: number
   text: number
-  likes: number
-  dislikes: number
   writerId: number
   videoId: number
   createdAt: number
@@ -71,21 +53,9 @@ export type CommentCountAggregateOutputType = {
 }
 
 
-export type CommentAvgAggregateInputType = {
-  likes?: true
-  dislikes?: true
-}
-
-export type CommentSumAggregateInputType = {
-  likes?: true
-  dislikes?: true
-}
-
 export type CommentMinAggregateInputType = {
   commentId?: true
   text?: true
-  likes?: true
-  dislikes?: true
   writerId?: true
   videoId?: true
   createdAt?: true
@@ -95,8 +65,6 @@ export type CommentMinAggregateInputType = {
 export type CommentMaxAggregateInputType = {
   commentId?: true
   text?: true
-  likes?: true
-  dislikes?: true
   writerId?: true
   videoId?: true
   createdAt?: true
@@ -106,8 +74,6 @@ export type CommentMaxAggregateInputType = {
 export type CommentCountAggregateInputType = {
   commentId?: true
   text?: true
-  likes?: true
-  dislikes?: true
   writerId?: true
   videoId?: true
   createdAt?: true
@@ -153,18 +119,6 @@ export type CommentAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: CommentAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: CommentSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: CommentMinAggregateInputType
@@ -195,8 +149,6 @@ export type CommentGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: CommentCountAggregateInputType | true
-  _avg?: CommentAvgAggregateInputType
-  _sum?: CommentSumAggregateInputType
   _min?: CommentMinAggregateInputType
   _max?: CommentMaxAggregateInputType
 }
@@ -204,15 +156,11 @@ export type CommentGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type CommentGroupByOutputType = {
   commentId: string
   text: string
-  likes: number
-  dislikes: number
   writerId: string
   videoId: string
   createdAt: Date
   updatedAt: Date
   _count: CommentCountAggregateOutputType | null
-  _avg: CommentAvgAggregateOutputType | null
-  _sum: CommentSumAggregateOutputType | null
   _min: CommentMinAggregateOutputType | null
   _max: CommentMaxAggregateOutputType | null
 }
@@ -238,8 +186,6 @@ export type CommentWhereInput = {
   NOT?: Prisma.CommentWhereInput | Prisma.CommentWhereInput[]
   commentId?: Prisma.StringFilter<"Comment"> | string
   text?: Prisma.StringFilter<"Comment"> | string
-  likes?: Prisma.IntFilter<"Comment"> | number
-  dislikes?: Prisma.IntFilter<"Comment"> | number
   writerId?: Prisma.StringFilter<"Comment"> | string
   videoId?: Prisma.StringFilter<"Comment"> | string
   createdAt?: Prisma.DateTimeFilter<"Comment"> | Date | string
@@ -251,8 +197,6 @@ export type CommentWhereInput = {
 export type CommentOrderByWithRelationInput = {
   commentId?: Prisma.SortOrder
   text?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   writerId?: Prisma.SortOrder
   videoId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -267,8 +211,6 @@ export type CommentWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.CommentWhereInput[]
   NOT?: Prisma.CommentWhereInput | Prisma.CommentWhereInput[]
   text?: Prisma.StringFilter<"Comment"> | string
-  likes?: Prisma.IntFilter<"Comment"> | number
-  dislikes?: Prisma.IntFilter<"Comment"> | number
   writerId?: Prisma.StringFilter<"Comment"> | string
   videoId?: Prisma.StringFilter<"Comment"> | string
   createdAt?: Prisma.DateTimeFilter<"Comment"> | Date | string
@@ -280,17 +222,13 @@ export type CommentWhereUniqueInput = Prisma.AtLeast<{
 export type CommentOrderByWithAggregationInput = {
   commentId?: Prisma.SortOrder
   text?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   writerId?: Prisma.SortOrder
   videoId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.CommentCountOrderByAggregateInput
-  _avg?: Prisma.CommentAvgOrderByAggregateInput
   _max?: Prisma.CommentMaxOrderByAggregateInput
   _min?: Prisma.CommentMinOrderByAggregateInput
-  _sum?: Prisma.CommentSumOrderByAggregateInput
 }
 
 export type CommentScalarWhereWithAggregatesInput = {
@@ -299,8 +237,6 @@ export type CommentScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CommentScalarWhereWithAggregatesInput | Prisma.CommentScalarWhereWithAggregatesInput[]
   commentId?: Prisma.StringWithAggregatesFilter<"Comment"> | string
   text?: Prisma.StringWithAggregatesFilter<"Comment"> | string
-  likes?: Prisma.IntWithAggregatesFilter<"Comment"> | number
-  dislikes?: Prisma.IntWithAggregatesFilter<"Comment"> | number
   writerId?: Prisma.StringWithAggregatesFilter<"Comment"> | string
   videoId?: Prisma.StringWithAggregatesFilter<"Comment"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Comment"> | Date | string
@@ -310,8 +246,6 @@ export type CommentScalarWhereWithAggregatesInput = {
 export type CommentCreateInput = {
   commentId?: string
   text: string
-  likes?: number
-  dislikes?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   writer: Prisma.ProfileCreateNestedOneWithoutCommentsInput
@@ -321,8 +255,6 @@ export type CommentCreateInput = {
 export type CommentUncheckedCreateInput = {
   commentId?: string
   text: string
-  likes?: number
-  dislikes?: number
   writerId: string
   videoId: string
   createdAt?: Date | string
@@ -332,8 +264,6 @@ export type CommentUncheckedCreateInput = {
 export type CommentUpdateInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   writer?: Prisma.ProfileUpdateOneRequiredWithoutCommentsNestedInput
@@ -343,8 +273,6 @@ export type CommentUpdateInput = {
 export type CommentUncheckedUpdateInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   writerId?: Prisma.StringFieldUpdateOperationsInput | string
   videoId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -354,8 +282,6 @@ export type CommentUncheckedUpdateInput = {
 export type CommentCreateManyInput = {
   commentId?: string
   text: string
-  likes?: number
-  dislikes?: number
   writerId: string
   videoId: string
   createdAt?: Date | string
@@ -365,8 +291,6 @@ export type CommentCreateManyInput = {
 export type CommentUpdateManyMutationInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -374,8 +298,6 @@ export type CommentUpdateManyMutationInput = {
 export type CommentUncheckedUpdateManyInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   writerId?: Prisma.StringFieldUpdateOperationsInput | string
   videoId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -385,24 +307,15 @@ export type CommentUncheckedUpdateManyInput = {
 export type CommentCountOrderByAggregateInput = {
   commentId?: Prisma.SortOrder
   text?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   writerId?: Prisma.SortOrder
   videoId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
-export type CommentAvgOrderByAggregateInput = {
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
-}
-
 export type CommentMaxOrderByAggregateInput = {
   commentId?: Prisma.SortOrder
   text?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   writerId?: Prisma.SortOrder
   videoId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -412,17 +325,10 @@ export type CommentMaxOrderByAggregateInput = {
 export type CommentMinOrderByAggregateInput = {
   commentId?: Prisma.SortOrder
   text?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   writerId?: Prisma.SortOrder
   videoId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-}
-
-export type CommentSumOrderByAggregateInput = {
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
 }
 
 export type CommentListRelationFilter = {
@@ -433,22 +339,6 @@ export type CommentListRelationFilter = {
 
 export type CommentOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 export type CommentCreateNestedManyWithoutWriterInput = {
@@ -538,8 +428,6 @@ export type CommentUncheckedUpdateManyWithoutVideoNestedInput = {
 export type CommentCreateWithoutWriterInput = {
   commentId?: string
   text: string
-  likes?: number
-  dislikes?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   video: Prisma.VideoCreateNestedOneWithoutCommentsInput
@@ -548,8 +436,6 @@ export type CommentCreateWithoutWriterInput = {
 export type CommentUncheckedCreateWithoutWriterInput = {
   commentId?: string
   text: string
-  likes?: number
-  dislikes?: number
   videoId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -587,8 +473,6 @@ export type CommentScalarWhereInput = {
   NOT?: Prisma.CommentScalarWhereInput | Prisma.CommentScalarWhereInput[]
   commentId?: Prisma.StringFilter<"Comment"> | string
   text?: Prisma.StringFilter<"Comment"> | string
-  likes?: Prisma.IntFilter<"Comment"> | number
-  dislikes?: Prisma.IntFilter<"Comment"> | number
   writerId?: Prisma.StringFilter<"Comment"> | string
   videoId?: Prisma.StringFilter<"Comment"> | string
   createdAt?: Prisma.DateTimeFilter<"Comment"> | Date | string
@@ -598,8 +482,6 @@ export type CommentScalarWhereInput = {
 export type CommentCreateWithoutVideoInput = {
   commentId?: string
   text: string
-  likes?: number
-  dislikes?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   writer: Prisma.ProfileCreateNestedOneWithoutCommentsInput
@@ -608,8 +490,6 @@ export type CommentCreateWithoutVideoInput = {
 export type CommentUncheckedCreateWithoutVideoInput = {
   commentId?: string
   text: string
-  likes?: number
-  dislikes?: number
   writerId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -644,8 +524,6 @@ export type CommentUpdateManyWithWhereWithoutVideoInput = {
 export type CommentCreateManyWriterInput = {
   commentId?: string
   text: string
-  likes?: number
-  dislikes?: number
   videoId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -654,8 +532,6 @@ export type CommentCreateManyWriterInput = {
 export type CommentUpdateWithoutWriterInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   video?: Prisma.VideoUpdateOneRequiredWithoutCommentsNestedInput
@@ -664,8 +540,6 @@ export type CommentUpdateWithoutWriterInput = {
 export type CommentUncheckedUpdateWithoutWriterInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   videoId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -674,8 +548,6 @@ export type CommentUncheckedUpdateWithoutWriterInput = {
 export type CommentUncheckedUpdateManyWithoutWriterInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   videoId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -684,8 +556,6 @@ export type CommentUncheckedUpdateManyWithoutWriterInput = {
 export type CommentCreateManyVideoInput = {
   commentId?: string
   text: string
-  likes?: number
-  dislikes?: number
   writerId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -694,8 +564,6 @@ export type CommentCreateManyVideoInput = {
 export type CommentUpdateWithoutVideoInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   writer?: Prisma.ProfileUpdateOneRequiredWithoutCommentsNestedInput
@@ -704,8 +572,6 @@ export type CommentUpdateWithoutVideoInput = {
 export type CommentUncheckedUpdateWithoutVideoInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   writerId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -714,8 +580,6 @@ export type CommentUncheckedUpdateWithoutVideoInput = {
 export type CommentUncheckedUpdateManyWithoutVideoInput = {
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   writerId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -726,8 +590,6 @@ export type CommentUncheckedUpdateManyWithoutVideoInput = {
 export type CommentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   commentId?: boolean
   text?: boolean
-  likes?: boolean
-  dislikes?: boolean
   writerId?: boolean
   videoId?: boolean
   createdAt?: boolean
@@ -739,8 +601,6 @@ export type CommentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type CommentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   commentId?: boolean
   text?: boolean
-  likes?: boolean
-  dislikes?: boolean
   writerId?: boolean
   videoId?: boolean
   createdAt?: boolean
@@ -752,8 +612,6 @@ export type CommentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type CommentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   commentId?: boolean
   text?: boolean
-  likes?: boolean
-  dislikes?: boolean
   writerId?: boolean
   videoId?: boolean
   createdAt?: boolean
@@ -765,15 +623,13 @@ export type CommentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type CommentSelectScalar = {
   commentId?: boolean
   text?: boolean
-  likes?: boolean
-  dislikes?: boolean
   writerId?: boolean
   videoId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CommentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"commentId" | "text" | "likes" | "dislikes" | "writerId" | "videoId" | "createdAt" | "updatedAt", ExtArgs["result"]["comment"]>
+export type CommentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"commentId" | "text" | "writerId" | "videoId" | "createdAt" | "updatedAt", ExtArgs["result"]["comment"]>
 export type CommentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   writer?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   video?: boolean | Prisma.VideoDefaultArgs<ExtArgs>
@@ -796,8 +652,6 @@ export type $CommentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     commentId: string
     text: string
-    likes: number
-    dislikes: number
     writerId: string
     videoId: string
     createdAt: Date
@@ -1229,8 +1083,6 @@ export interface Prisma__CommentClient<T, Null = never, ExtArgs extends runtime.
 export interface CommentFieldRefs {
   readonly commentId: Prisma.FieldRef<"Comment", 'String'>
   readonly text: Prisma.FieldRef<"Comment", 'String'>
-  readonly likes: Prisma.FieldRef<"Comment", 'Int'>
-  readonly dislikes: Prisma.FieldRef<"Comment", 'Int'>
   readonly writerId: Prisma.FieldRef<"Comment", 'String'>
   readonly videoId: Prisma.FieldRef<"Comment", 'String'>
   readonly createdAt: Prisma.FieldRef<"Comment", 'DateTime'>

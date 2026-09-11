@@ -21,42 +21,75 @@ export async function GET(
 ) {
     try {
         const { videoId } = await params
+        const profileId = req.nextUrl.searchParams.get('profileId')
 
         if (!videoId || videoId.trim() === '') return NextResponse.json(
             { error: 'VideoId not found' },
             { status: 404, headers: CORS_HEADERS }
         )
 
-        const video = await prisma.video.findUnique({
-            where: { videoId },
-            include: {
-                creator: {
-                    select: {
-                        avatar: true,
-                        profileName: true,
-                        profileId: true,
-                        subscribers: true,
-                        createdAt: true
-                    }
-                },
-                comments: {
-                    select: {
-                        dislikes: true,
-                        commentId: true,
-                        likes: true,
-                        text: true,
-                        createdAt: true,
-                        writer: {
-                            select: {
-                                avatar: true,
-                                profileName: true,
-                                profileId: true
+        if (!profileId || profileId.trim() === '') return NextResponse.json(
+            { error: 'profileId not found' },
+            { status: 404, headers: CORS_HEADERS }
+        )
+
+        const [video, likes, disLikes, reaction] = await Promise.all([
+            prisma.video.findUnique({
+                where: { videoId },
+                include: {
+                    creator: {
+                        select: {
+                            channelId: true,
+                            subscribers: true,
+                            channelName: true,
+                            description: true,
+                            logo: true,
+                            userName: true,
+                            createdAt: true,
+                            subscriptions: {
+                                where: { profileId },
+                                select: {
+                                    notifications: true,
+                                    profile: {
+                                        select: {
+                                            profileName: true,
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                    },
+                    comments: {
+                        select: {
+                            commentId: true,
+                            text: true,
+                            createdAt: true,
+                            writer: {
+                                select: {
+                                    avatar: true,
+                                    profileName: true,
+                                    profileId: true,
+                                }
                             }
                         }
-                    }
+                    },
                 }
-            }
-        })
+            }),
+            prisma.reaction.count({
+                where: { videoId, reactionType: 'LIKE' }
+            }),
+            prisma.reaction.count({
+                where: { videoId, reactionType: 'DISLIKE' }
+            }),
+            prisma.reaction.findUnique({
+                where: {
+                    profileId_videoId: { profileId, videoId }
+                },
+                select: { reactionType: true }
+            })
+        ])
+
+        const { subscriptions, ...createrData } = video.creator
 
         if (!video) {
             return NextResponse.json(
@@ -65,7 +98,16 @@ export async function GET(
             )
         }
 
-        return NextResponse.json(video, {
+        return NextResponse.json({
+            ...video,
+
+            likes,
+            disLikes,
+            reaction: reaction?.reactionType ?? null,
+
+            isSubscription: !!subscriptions[0],
+            notifications: subscriptions[0].notifications
+        }, {
             headers: CORS_HEADERS,
         })
     } catch (error) {

@@ -6,14 +6,13 @@ model Video {
     description String
     released    DateTime
 
-    likes    Int @default(0)
-    dislikes Int @default(0)
-    views    Int @default(0)
+    views Int @default(0)
 
     creatorId String  @map("creator_id")
-    creator   Profile @relation(fields: [creatorId], references: [profileId])
+    creator   Channel @relation(fields: [creatorId], references: [channelId])
 
-    comments Comment[]
+    comments  Comment[]
+    reactions Reaction[]
 
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")

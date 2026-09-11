@@ -18,6 +18,11 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
+ * Model Channel
+ * 
+ */
+export type Channel = Prisma.ChannelModel
+/**
  * Model Comment
  * 
  */
@@ -27,6 +32,16 @@ export type Comment = Prisma.CommentModel
  * 
  */
 export type Profile = Prisma.ProfileModel
+/**
+ * Model Reaction
+ * 
+ */
+export type Reaction = Prisma.ReactionModel
+/**
+ * Model Subscription
+ * 
+ */
+export type Subscription = Prisma.SubscriptionModel
 /**
  * Model Video
  * 

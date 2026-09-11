@@ -1,0 +1,21 @@
+model Channel {
+    channelId String @id @default(cuid()) @map("channel_id")
+
+    channelName String @map("channel_name")
+    userName    String @map("user_name")
+
+    subscribers Int    @default(0)
+    description String
+    logo        String
+
+    ownerId String  @unique @map("owner_id")
+    profile Profile @relation(fields: [ownerId], references: [profileId])
+
+    videos        Video[]
+    subscriptions Subscription[]
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("channels")
+}

@@ -1,11 +1,19 @@
 import { prisma } from "../src/lib/prisma"
-import { comments, profiles, videos } from "./constants"
+import { channels, comments, profiles, reactions, subscriptions, videos } from "./constants"
 
 async function up() {
     console.log('Начинаем заполнение базы данных...')
 
     await prisma.profile.createMany({
         data: profiles
+    })
+
+    await prisma.channel.createMany({
+        data: channels
+    })
+
+    await prisma.subscription.createMany({
+        data: subscriptions
     })
 
     await prisma.video.createMany({
@@ -16,13 +24,20 @@ async function up() {
         data: comments
     })
 
+    await prisma.reaction.createMany({
+        data: reactions
+    })
+
     console.log('Seeding завершён успешно!')
 }
 
 async function down() {
 
+    await prisma.reaction.deleteMany()
     await prisma.comment.deleteMany()
     await prisma.video.deleteMany()
+    await prisma.subscription.deleteMany()
+    await prisma.channel.deleteMany()
     await prisma.profile.deleteMany()
 
     console.log('База данных очищена')

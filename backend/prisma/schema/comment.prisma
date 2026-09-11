@@ -1,9 +1,7 @@
 model Comment {
     commentId String @id @default(cuid()) @map("comment_id")
 
-    text     String
-    likes    Int    @default(0)
-    dislikes Int    @default(0)
+    text String
 
     writerId String  @map("writer_id")
     writer   Profile @relation(fields: [writerId], references: [profileId])

@@ -20,25 +20,14 @@ export type ProfileModel = runtime.Types.Result.DefaultSelection<Prisma.$Profile
 
 export type AggregateProfile = {
   _count: ProfileCountAggregateOutputType | null
-  _avg: ProfileAvgAggregateOutputType | null
-  _sum: ProfileSumAggregateOutputType | null
   _min: ProfileMinAggregateOutputType | null
   _max: ProfileMaxAggregateOutputType | null
-}
-
-export type ProfileAvgAggregateOutputType = {
-  subscribers: number | null
-}
-
-export type ProfileSumAggregateOutputType = {
-  subscribers: number | null
 }
 
 export type ProfileMinAggregateOutputType = {
   profileId: string | null
   avatar: string | null
   profileName: string | null
-  subscribers: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -47,7 +36,6 @@ export type ProfileMaxAggregateOutputType = {
   profileId: string | null
   avatar: string | null
   profileName: string | null
-  subscribers: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,26 +44,16 @@ export type ProfileCountAggregateOutputType = {
   profileId: number
   avatar: number
   profileName: number
-  subscribers: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
 
-export type ProfileAvgAggregateInputType = {
-  subscribers?: true
-}
-
-export type ProfileSumAggregateInputType = {
-  subscribers?: true
-}
-
 export type ProfileMinAggregateInputType = {
   profileId?: true
   avatar?: true
   profileName?: true
-  subscribers?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -84,7 +62,6 @@ export type ProfileMaxAggregateInputType = {
   profileId?: true
   avatar?: true
   profileName?: true
-  subscribers?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -93,7 +70,6 @@ export type ProfileCountAggregateInputType = {
   profileId?: true
   avatar?: true
   profileName?: true
-  subscribers?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -137,18 +113,6 @@ export type ProfileAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: ProfileAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: ProfileSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: ProfileMinAggregateInputType
@@ -179,8 +143,6 @@ export type ProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: ProfileCountAggregateInputType | true
-  _avg?: ProfileAvgAggregateInputType
-  _sum?: ProfileSumAggregateInputType
   _min?: ProfileMinAggregateInputType
   _max?: ProfileMaxAggregateInputType
 }
@@ -189,12 +151,9 @@ export type ProfileGroupByOutputType = {
   profileId: string
   avatar: string
   profileName: string
-  subscribers: number
   createdAt: Date
   updatedAt: Date
   _count: ProfileCountAggregateOutputType | null
-  _avg: ProfileAvgAggregateOutputType | null
-  _sum: ProfileSumAggregateOutputType | null
   _min: ProfileMinAggregateOutputType | null
   _max: ProfileMaxAggregateOutputType | null
 }
@@ -221,22 +180,24 @@ export type ProfileWhereInput = {
   profileId?: Prisma.StringFilter<"Profile"> | string
   avatar?: Prisma.StringFilter<"Profile"> | string
   profileName?: Prisma.StringFilter<"Profile"> | string
-  subscribers?: Prisma.IntFilter<"Profile"> | number
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
-  videos?: Prisma.VideoListRelationFilter
+  reactions?: Prisma.ReactionListRelationFilter
   comments?: Prisma.CommentListRelationFilter
+  channel?: Prisma.XOR<Prisma.ChannelNullableScalarRelationFilter, Prisma.ChannelWhereInput> | null
+  subscriptions?: Prisma.SubscriptionListRelationFilter
 }
 
 export type ProfileOrderByWithRelationInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
-  subscribers?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  videos?: Prisma.VideoOrderByRelationAggregateInput
+  reactions?: Prisma.ReactionOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
+  channel?: Prisma.ChannelOrderByWithRelationInput
+  subscriptions?: Prisma.SubscriptionOrderByRelationAggregateInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -246,25 +207,23 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   avatar?: Prisma.StringFilter<"Profile"> | string
   profileName?: Prisma.StringFilter<"Profile"> | string
-  subscribers?: Prisma.IntFilter<"Profile"> | number
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
-  videos?: Prisma.VideoListRelationFilter
+  reactions?: Prisma.ReactionListRelationFilter
   comments?: Prisma.CommentListRelationFilter
+  channel?: Prisma.XOR<Prisma.ChannelNullableScalarRelationFilter, Prisma.ChannelWhereInput> | null
+  subscriptions?: Prisma.SubscriptionListRelationFilter
 }, "profileId">
 
 export type ProfileOrderByWithAggregationInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
-  subscribers?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ProfileCountOrderByAggregateInput
-  _avg?: Prisma.ProfileAvgOrderByAggregateInput
   _max?: Prisma.ProfileMaxOrderByAggregateInput
   _min?: Prisma.ProfileMinOrderByAggregateInput
-  _sum?: Prisma.ProfileSumOrderByAggregateInput
 }
 
 export type ProfileScalarWhereWithAggregatesInput = {
@@ -274,7 +233,6 @@ export type ProfileScalarWhereWithAggregatesInput = {
   profileId?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   avatar?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   profileName?: Prisma.StringWithAggregatesFilter<"Profile"> | string
-  subscribers?: Prisma.IntWithAggregatesFilter<"Profile"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Profile"> | Date | string
 }
@@ -283,51 +241,54 @@ export type ProfileCreateInput = {
   profileId?: string
   avatar: string
   profileName: string
-  subscribers?: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  videos?: Prisma.VideoCreateNestedManyWithoutCreatorInput
+  reactions?: Prisma.ReactionCreateNestedManyWithoutProfileInput
   comments?: Prisma.CommentCreateNestedManyWithoutWriterInput
+  channel?: Prisma.ChannelCreateNestedOneWithoutProfileInput
+  subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateInput = {
   profileId?: string
   avatar: string
   profileName: string
-  subscribers?: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  videos?: Prisma.VideoUncheckedCreateNestedManyWithoutCreatorInput
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutProfileInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutWriterInput
+  channel?: Prisma.ChannelUncheckedCreateNestedOneWithoutProfileInput
+  subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUpdateInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
-  subscribers?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  videos?: Prisma.VideoUpdateManyWithoutCreatorNestedInput
+  reactions?: Prisma.ReactionUpdateManyWithoutProfileNestedInput
   comments?: Prisma.CommentUpdateManyWithoutWriterNestedInput
+  channel?: Prisma.ChannelUpdateOneWithoutProfileNestedInput
+  subscriptions?: Prisma.SubscriptionUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
-  subscribers?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  videos?: Prisma.VideoUncheckedUpdateManyWithoutCreatorNestedInput
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutProfileNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutWriterNestedInput
+  channel?: Prisma.ChannelUncheckedUpdateOneWithoutProfileNestedInput
+  subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyInput = {
   profileId?: string
   avatar: string
   profileName: string
-  subscribers?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -336,7 +297,6 @@ export type ProfileUpdateManyMutationInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
-  subscribers?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -345,7 +305,6 @@ export type ProfileUncheckedUpdateManyInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
-  subscribers?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -359,20 +318,14 @@ export type ProfileCountOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
-  subscribers?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-}
-
-export type ProfileAvgOrderByAggregateInput = {
-  subscribers?: Prisma.SortOrder
 }
 
 export type ProfileMaxOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
-  subscribers?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -381,13 +334,22 @@ export type ProfileMinOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
-  subscribers?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
-export type ProfileSumOrderByAggregateInput = {
-  subscribers?: Prisma.SortOrder
+export type ProfileCreateNestedOneWithoutChannelInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutChannelInput, Prisma.ProfileUncheckedCreateWithoutChannelInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutChannelInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneRequiredWithoutChannelNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutChannelInput, Prisma.ProfileUncheckedCreateWithoutChannelInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutChannelInput
+  upsert?: Prisma.ProfileUpsertWithoutChannelInput
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutChannelInput, Prisma.ProfileUpdateWithoutChannelInput>, Prisma.ProfileUncheckedUpdateWithoutChannelInput>
 }
 
 export type ProfileCreateNestedOneWithoutCommentsInput = {
@@ -404,38 +366,114 @@ export type ProfileUpdateOneRequiredWithoutCommentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutCommentsInput, Prisma.ProfileUpdateWithoutCommentsInput>, Prisma.ProfileUncheckedUpdateWithoutCommentsInput>
 }
 
-export type ProfileCreateNestedOneWithoutVideosInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutVideosInput, Prisma.ProfileUncheckedCreateWithoutVideosInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutVideosInput
+export type ProfileCreateNestedOneWithoutReactionsInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutReactionsInput, Prisma.ProfileUncheckedCreateWithoutReactionsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutReactionsInput
   connect?: Prisma.ProfileWhereUniqueInput
 }
 
-export type ProfileUpdateOneRequiredWithoutVideosNestedInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutVideosInput, Prisma.ProfileUncheckedCreateWithoutVideosInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutVideosInput
-  upsert?: Prisma.ProfileUpsertWithoutVideosInput
+export type ProfileUpdateOneRequiredWithoutReactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutReactionsInput, Prisma.ProfileUncheckedCreateWithoutReactionsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutReactionsInput
+  upsert?: Prisma.ProfileUpsertWithoutReactionsInput
   connect?: Prisma.ProfileWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutVideosInput, Prisma.ProfileUpdateWithoutVideosInput>, Prisma.ProfileUncheckedUpdateWithoutVideosInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutReactionsInput, Prisma.ProfileUpdateWithoutReactionsInput>, Prisma.ProfileUncheckedUpdateWithoutReactionsInput>
+}
+
+export type ProfileCreateNestedOneWithoutSubscriptionsInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutSubscriptionsInput, Prisma.ProfileUncheckedCreateWithoutSubscriptionsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutSubscriptionsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneRequiredWithoutSubscriptionsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutSubscriptionsInput, Prisma.ProfileUncheckedCreateWithoutSubscriptionsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutSubscriptionsInput
+  upsert?: Prisma.ProfileUpsertWithoutSubscriptionsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutSubscriptionsInput, Prisma.ProfileUpdateWithoutSubscriptionsInput>, Prisma.ProfileUncheckedUpdateWithoutSubscriptionsInput>
+}
+
+export type ProfileCreateWithoutChannelInput = {
+  profileId?: string
+  avatar: string
+  profileName: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  reactions?: Prisma.ReactionCreateNestedManyWithoutProfileInput
+  comments?: Prisma.CommentCreateNestedManyWithoutWriterInput
+  subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutChannelInput = {
+  profileId?: string
+  avatar: string
+  profileName: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutProfileInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutWriterInput
+  subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutChannelInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutChannelInput, Prisma.ProfileUncheckedCreateWithoutChannelInput>
+}
+
+export type ProfileUpsertWithoutChannelInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutChannelInput, Prisma.ProfileUncheckedUpdateWithoutChannelInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutChannelInput, Prisma.ProfileUncheckedCreateWithoutChannelInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutChannelInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutChannelInput, Prisma.ProfileUncheckedUpdateWithoutChannelInput>
+}
+
+export type ProfileUpdateWithoutChannelInput = {
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reactions?: Prisma.ReactionUpdateManyWithoutProfileNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutWriterNestedInput
+  subscriptions?: Prisma.SubscriptionUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutChannelInput = {
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutProfileNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutWriterNestedInput
+  subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutCommentsInput = {
   profileId?: string
   avatar: string
   profileName: string
-  subscribers?: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  videos?: Prisma.VideoCreateNestedManyWithoutCreatorInput
+  reactions?: Prisma.ReactionCreateNestedManyWithoutProfileInput
+  channel?: Prisma.ChannelCreateNestedOneWithoutProfileInput
+  subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutCommentsInput = {
   profileId?: string
   avatar: string
   profileName: string
-  subscribers?: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  videos?: Prisma.VideoUncheckedCreateNestedManyWithoutCreatorInput
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutProfileInput
+  channel?: Prisma.ChannelUncheckedCreateNestedOneWithoutProfileInput
+  subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutCommentsInput = {
@@ -458,76 +496,142 @@ export type ProfileUpdateWithoutCommentsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
-  subscribers?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  videos?: Prisma.VideoUpdateManyWithoutCreatorNestedInput
+  reactions?: Prisma.ReactionUpdateManyWithoutProfileNestedInput
+  channel?: Prisma.ChannelUpdateOneWithoutProfileNestedInput
+  subscriptions?: Prisma.SubscriptionUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutCommentsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
-  subscribers?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  videos?: Prisma.VideoUncheckedUpdateManyWithoutCreatorNestedInput
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutProfileNestedInput
+  channel?: Prisma.ChannelUncheckedUpdateOneWithoutProfileNestedInput
+  subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutProfileNestedInput
 }
 
-export type ProfileCreateWithoutVideosInput = {
+export type ProfileCreateWithoutReactionsInput = {
   profileId?: string
   avatar: string
   profileName: string
-  subscribers?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentCreateNestedManyWithoutWriterInput
+  channel?: Prisma.ChannelCreateNestedOneWithoutProfileInput
+  subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutProfileInput
 }
 
-export type ProfileUncheckedCreateWithoutVideosInput = {
+export type ProfileUncheckedCreateWithoutReactionsInput = {
   profileId?: string
   avatar: string
   profileName: string
-  subscribers?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutWriterInput
+  channel?: Prisma.ChannelUncheckedCreateNestedOneWithoutProfileInput
+  subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutProfileInput
 }
 
-export type ProfileCreateOrConnectWithoutVideosInput = {
+export type ProfileCreateOrConnectWithoutReactionsInput = {
   where: Prisma.ProfileWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProfileCreateWithoutVideosInput, Prisma.ProfileUncheckedCreateWithoutVideosInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutReactionsInput, Prisma.ProfileUncheckedCreateWithoutReactionsInput>
 }
 
-export type ProfileUpsertWithoutVideosInput = {
-  update: Prisma.XOR<Prisma.ProfileUpdateWithoutVideosInput, Prisma.ProfileUncheckedUpdateWithoutVideosInput>
-  create: Prisma.XOR<Prisma.ProfileCreateWithoutVideosInput, Prisma.ProfileUncheckedCreateWithoutVideosInput>
+export type ProfileUpsertWithoutReactionsInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutReactionsInput, Prisma.ProfileUncheckedUpdateWithoutReactionsInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutReactionsInput, Prisma.ProfileUncheckedCreateWithoutReactionsInput>
   where?: Prisma.ProfileWhereInput
 }
 
-export type ProfileUpdateToOneWithWhereWithoutVideosInput = {
+export type ProfileUpdateToOneWithWhereWithoutReactionsInput = {
   where?: Prisma.ProfileWhereInput
-  data: Prisma.XOR<Prisma.ProfileUpdateWithoutVideosInput, Prisma.ProfileUncheckedUpdateWithoutVideosInput>
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutReactionsInput, Prisma.ProfileUncheckedUpdateWithoutReactionsInput>
 }
 
-export type ProfileUpdateWithoutVideosInput = {
+export type ProfileUpdateWithoutReactionsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
-  subscribers?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUpdateManyWithoutWriterNestedInput
+  channel?: Prisma.ChannelUpdateOneWithoutProfileNestedInput
+  subscriptions?: Prisma.SubscriptionUpdateManyWithoutProfileNestedInput
 }
 
-export type ProfileUncheckedUpdateWithoutVideosInput = {
+export type ProfileUncheckedUpdateWithoutReactionsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
-  subscribers?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUncheckedUpdateManyWithoutWriterNestedInput
+  channel?: Prisma.ChannelUncheckedUpdateOneWithoutProfileNestedInput
+  subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateWithoutSubscriptionsInput = {
+  profileId?: string
+  avatar: string
+  profileName: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  reactions?: Prisma.ReactionCreateNestedManyWithoutProfileInput
+  comments?: Prisma.CommentCreateNestedManyWithoutWriterInput
+  channel?: Prisma.ChannelCreateNestedOneWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutSubscriptionsInput = {
+  profileId?: string
+  avatar: string
+  profileName: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutProfileInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutWriterInput
+  channel?: Prisma.ChannelUncheckedCreateNestedOneWithoutProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutSubscriptionsInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutSubscriptionsInput, Prisma.ProfileUncheckedCreateWithoutSubscriptionsInput>
+}
+
+export type ProfileUpsertWithoutSubscriptionsInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutSubscriptionsInput, Prisma.ProfileUncheckedUpdateWithoutSubscriptionsInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutSubscriptionsInput, Prisma.ProfileUncheckedCreateWithoutSubscriptionsInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutSubscriptionsInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutSubscriptionsInput, Prisma.ProfileUncheckedUpdateWithoutSubscriptionsInput>
+}
+
+export type ProfileUpdateWithoutSubscriptionsInput = {
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reactions?: Prisma.ReactionUpdateManyWithoutProfileNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutWriterNestedInput
+  channel?: Prisma.ChannelUpdateOneWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutSubscriptionsInput = {
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutProfileNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutWriterNestedInput
+  channel?: Prisma.ChannelUncheckedUpdateOneWithoutProfileNestedInput
 }
 
 
@@ -536,13 +640,15 @@ export type ProfileUncheckedUpdateWithoutVideosInput = {
  */
 
 export type ProfileCountOutputType = {
-  videos: number
+  reactions: number
   comments: number
+  subscriptions: number
 }
 
 export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  videos?: boolean | ProfileCountOutputTypeCountVideosArgs
+  reactions?: boolean | ProfileCountOutputTypeCountReactionsArgs
   comments?: boolean | ProfileCountOutputTypeCountCommentsArgs
+  subscriptions?: boolean | ProfileCountOutputTypeCountSubscriptionsArgs
 }
 
 /**
@@ -558,8 +664,8 @@ export type ProfileCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
 /**
  * ProfileCountOutputType without action
  */
-export type ProfileCountOutputTypeCountVideosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.VideoWhereInput
+export type ProfileCountOutputTypeCountReactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReactionWhereInput
 }
 
 /**
@@ -569,16 +675,24 @@ export type ProfileCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Type
   where?: Prisma.CommentWhereInput
 }
 
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountSubscriptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SubscriptionWhereInput
+}
+
 
 export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   profileId?: boolean
   avatar?: boolean
   profileName?: boolean
-  subscribers?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  videos?: boolean | Prisma.Profile$videosArgs<ExtArgs>
+  reactions?: boolean | Prisma.Profile$reactionsArgs<ExtArgs>
   comments?: boolean | Prisma.Profile$commentsArgs<ExtArgs>
+  channel?: boolean | Prisma.Profile$channelArgs<ExtArgs>
+  subscriptions?: boolean | Prisma.Profile$subscriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -586,7 +700,6 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   profileId?: boolean
   avatar?: boolean
   profileName?: boolean
-  subscribers?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["profile"]>
@@ -595,7 +708,6 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   profileId?: boolean
   avatar?: boolean
   profileName?: boolean
-  subscribers?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["profile"]>
@@ -604,15 +716,16 @@ export type ProfileSelectScalar = {
   profileId?: boolean
   avatar?: boolean
   profileName?: boolean
-  subscribers?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"profileId" | "avatar" | "profileName" | "subscribers" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"profileId" | "avatar" | "profileName" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  videos?: boolean | Prisma.Profile$videosArgs<ExtArgs>
+  reactions?: boolean | Prisma.Profile$reactionsArgs<ExtArgs>
   comments?: boolean | Prisma.Profile$commentsArgs<ExtArgs>
+  channel?: boolean | Prisma.Profile$channelArgs<ExtArgs>
+  subscriptions?: boolean | Prisma.Profile$subscriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -621,14 +734,15 @@ export type ProfileIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Profile"
   objects: {
-    videos: Prisma.$VideoPayload<ExtArgs>[]
+    reactions: Prisma.$ReactionPayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
+    channel: Prisma.$ChannelPayload<ExtArgs> | null
+    subscriptions: Prisma.$SubscriptionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     profileId: string
     avatar: string
     profileName: string
-    subscribers: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["profile"]>
@@ -1025,8 +1139,10 @@ readonly fields: ProfileFieldRefs;
  */
 export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  videos<T extends Prisma.Profile$videosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$videosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reactions<T extends Prisma.Profile$reactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$reactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.Profile$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  channel<T extends Prisma.Profile$channelArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$channelArgs<ExtArgs>>): Prisma.Prisma__ChannelClient<runtime.Types.Result.GetResult<Prisma.$ChannelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  subscriptions<T extends Prisma.Profile$subscriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1059,7 +1175,6 @@ export interface ProfileFieldRefs {
   readonly profileId: Prisma.FieldRef<"Profile", 'String'>
   readonly avatar: Prisma.FieldRef<"Profile", 'String'>
   readonly profileName: Prisma.FieldRef<"Profile", 'String'>
-  readonly subscribers: Prisma.FieldRef<"Profile", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Profile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Profile", 'DateTime'>
 }
@@ -1455,27 +1570,27 @@ export type ProfileDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Profile.videos
+ * Profile.reactions
  */
-export type Profile$videosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Profile$reactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Video
+   * Select specific fields to fetch from the Reaction
    */
-  select?: Prisma.VideoSelect<ExtArgs> | null
+  select?: Prisma.ReactionSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Video
+   * Omit specific fields from the Reaction
    */
-  omit?: Prisma.VideoOmit<ExtArgs> | null
+  omit?: Prisma.ReactionOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.VideoInclude<ExtArgs> | null
-  where?: Prisma.VideoWhereInput
-  orderBy?: Prisma.VideoOrderByWithRelationInput | Prisma.VideoOrderByWithRelationInput[]
-  cursor?: Prisma.VideoWhereUniqueInput
+  include?: Prisma.ReactionInclude<ExtArgs> | null
+  where?: Prisma.ReactionWhereInput
+  orderBy?: Prisma.ReactionOrderByWithRelationInput | Prisma.ReactionOrderByWithRelationInput[]
+  cursor?: Prisma.ReactionWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.VideoScalarFieldEnum | Prisma.VideoScalarFieldEnum[]
+  distinct?: Prisma.ReactionScalarFieldEnum | Prisma.ReactionScalarFieldEnum[]
 }
 
 /**
@@ -1500,6 +1615,49 @@ export type Profile$commentsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.CommentScalarFieldEnum | Prisma.CommentScalarFieldEnum[]
+}
+
+/**
+ * Profile.channel
+ */
+export type Profile$channelArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Channel
+   */
+  select?: Prisma.ChannelSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Channel
+   */
+  omit?: Prisma.ChannelOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChannelInclude<ExtArgs> | null
+  where?: Prisma.ChannelWhereInput
+}
+
+/**
+ * Profile.subscriptions
+ */
+export type Profile$subscriptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Subscription
+   */
+  select?: Prisma.SubscriptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Subscription
+   */
+  omit?: Prisma.SubscriptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SubscriptionInclude<ExtArgs> | null
+  where?: Prisma.SubscriptionWhereInput
+  orderBy?: Prisma.SubscriptionOrderByWithRelationInput | Prisma.SubscriptionOrderByWithRelationInput[]
+  cursor?: Prisma.SubscriptionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SubscriptionScalarFieldEnum | Prisma.SubscriptionScalarFieldEnum[]
 }
 
 /**

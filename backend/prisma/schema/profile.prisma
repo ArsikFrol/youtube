@@ -4,10 +4,10 @@ model Profile {
     avatar      String
     profileName String @map("profile_name")
 
-    subscribers Int @default(0)
-
-    videos   Video[]
-    comments Comment[]
+    reactions     Reaction[]
+    comments      Comment[]
+    channel       Channel?
+    subscriptions Subscription[]
 
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")

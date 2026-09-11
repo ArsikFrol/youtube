@@ -27,14 +27,10 @@ export type AggregateVideo = {
 }
 
 export type VideoAvgAggregateOutputType = {
-  likes: number | null
-  dislikes: number | null
   views: number | null
 }
 
 export type VideoSumAggregateOutputType = {
-  likes: number | null
-  dislikes: number | null
   views: number | null
 }
 
@@ -44,8 +40,6 @@ export type VideoMinAggregateOutputType = {
   title: string | null
   description: string | null
   released: Date | null
-  likes: number | null
-  dislikes: number | null
   views: number | null
   creatorId: string | null
   createdAt: Date | null
@@ -58,8 +52,6 @@ export type VideoMaxAggregateOutputType = {
   title: string | null
   description: string | null
   released: Date | null
-  likes: number | null
-  dislikes: number | null
   views: number | null
   creatorId: string | null
   createdAt: Date | null
@@ -72,8 +64,6 @@ export type VideoCountAggregateOutputType = {
   title: number
   description: number
   released: number
-  likes: number
-  dislikes: number
   views: number
   creatorId: number
   createdAt: number
@@ -83,14 +73,10 @@ export type VideoCountAggregateOutputType = {
 
 
 export type VideoAvgAggregateInputType = {
-  likes?: true
-  dislikes?: true
   views?: true
 }
 
 export type VideoSumAggregateInputType = {
-  likes?: true
-  dislikes?: true
   views?: true
 }
 
@@ -100,8 +86,6 @@ export type VideoMinAggregateInputType = {
   title?: true
   description?: true
   released?: true
-  likes?: true
-  dislikes?: true
   views?: true
   creatorId?: true
   createdAt?: true
@@ -114,8 +98,6 @@ export type VideoMaxAggregateInputType = {
   title?: true
   description?: true
   released?: true
-  likes?: true
-  dislikes?: true
   views?: true
   creatorId?: true
   createdAt?: true
@@ -128,8 +110,6 @@ export type VideoCountAggregateInputType = {
   title?: true
   description?: true
   released?: true
-  likes?: true
-  dislikes?: true
   views?: true
   creatorId?: true
   createdAt?: true
@@ -229,8 +209,6 @@ export type VideoGroupByOutputType = {
   title: string
   description: string
   released: Date
-  likes: number
-  dislikes: number
   views: number
   creatorId: string
   createdAt: Date
@@ -266,14 +244,13 @@ export type VideoWhereInput = {
   title?: Prisma.StringFilter<"Video"> | string
   description?: Prisma.StringFilter<"Video"> | string
   released?: Prisma.DateTimeFilter<"Video"> | Date | string
-  likes?: Prisma.IntFilter<"Video"> | number
-  dislikes?: Prisma.IntFilter<"Video"> | number
   views?: Prisma.IntFilter<"Video"> | number
   creatorId?: Prisma.StringFilter<"Video"> | string
   createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Video"> | Date | string
-  creator?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
+  creator?: Prisma.XOR<Prisma.ChannelScalarRelationFilter, Prisma.ChannelWhereInput>
   comments?: Prisma.CommentListRelationFilter
+  reactions?: Prisma.ReactionListRelationFilter
 }
 
 export type VideoOrderByWithRelationInput = {
@@ -282,14 +259,13 @@ export type VideoOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   released?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  creator?: Prisma.ProfileOrderByWithRelationInput
+  creator?: Prisma.ChannelOrderByWithRelationInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
+  reactions?: Prisma.ReactionOrderByRelationAggregateInput
 }
 
 export type VideoWhereUniqueInput = Prisma.AtLeast<{
@@ -301,14 +277,13 @@ export type VideoWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"Video"> | string
   description?: Prisma.StringFilter<"Video"> | string
   released?: Prisma.DateTimeFilter<"Video"> | Date | string
-  likes?: Prisma.IntFilter<"Video"> | number
-  dislikes?: Prisma.IntFilter<"Video"> | number
   views?: Prisma.IntFilter<"Video"> | number
   creatorId?: Prisma.StringFilter<"Video"> | string
   createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Video"> | Date | string
-  creator?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
+  creator?: Prisma.XOR<Prisma.ChannelScalarRelationFilter, Prisma.ChannelWhereInput>
   comments?: Prisma.CommentListRelationFilter
+  reactions?: Prisma.ReactionListRelationFilter
 }, "videoId">
 
 export type VideoOrderByWithAggregationInput = {
@@ -317,8 +292,6 @@ export type VideoOrderByWithAggregationInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   released?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -339,8 +312,6 @@ export type VideoScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"Video"> | string
   description?: Prisma.StringWithAggregatesFilter<"Video"> | string
   released?: Prisma.DateTimeWithAggregatesFilter<"Video"> | Date | string
-  likes?: Prisma.IntWithAggregatesFilter<"Video"> | number
-  dislikes?: Prisma.IntWithAggregatesFilter<"Video"> | number
   views?: Prisma.IntWithAggregatesFilter<"Video"> | number
   creatorId?: Prisma.StringWithAggregatesFilter<"Video"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Video"> | Date | string
@@ -353,13 +324,12 @@ export type VideoCreateInput = {
   title: string
   description: string
   released: Date | string
-  likes?: number
-  dislikes?: number
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  creator: Prisma.ProfileCreateNestedOneWithoutVideosInput
+  creator: Prisma.ChannelCreateNestedOneWithoutVideosInput
   comments?: Prisma.CommentCreateNestedManyWithoutVideoInput
+  reactions?: Prisma.ReactionCreateNestedManyWithoutVideoInput
 }
 
 export type VideoUncheckedCreateInput = {
@@ -368,13 +338,12 @@ export type VideoUncheckedCreateInput = {
   title: string
   description: string
   released: Date | string
-  likes?: number
-  dislikes?: number
   views?: number
   creatorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutVideoInput
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutVideoInput
 }
 
 export type VideoUpdateInput = {
@@ -383,13 +352,12 @@ export type VideoUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creator?: Prisma.ProfileUpdateOneRequiredWithoutVideosNestedInput
+  creator?: Prisma.ChannelUpdateOneRequiredWithoutVideosNestedInput
   comments?: Prisma.CommentUpdateManyWithoutVideoNestedInput
+  reactions?: Prisma.ReactionUpdateManyWithoutVideoNestedInput
 }
 
 export type VideoUncheckedUpdateInput = {
@@ -398,13 +366,12 @@ export type VideoUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUncheckedUpdateManyWithoutVideoNestedInput
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutVideoNestedInput
 }
 
 export type VideoCreateManyInput = {
@@ -413,8 +380,6 @@ export type VideoCreateManyInput = {
   title: string
   description: string
   released: Date | string
-  likes?: number
-  dislikes?: number
   views?: number
   creatorId: string
   createdAt?: Date | string
@@ -427,8 +392,6 @@ export type VideoUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -440,17 +403,10 @@ export type VideoUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type VideoScalarRelationFilter = {
-  is?: Prisma.VideoWhereInput
-  isNot?: Prisma.VideoWhereInput
 }
 
 export type VideoListRelationFilter = {
@@ -463,14 +419,17 @@ export type VideoOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type VideoScalarRelationFilter = {
+  is?: Prisma.VideoWhereInput
+  isNot?: Prisma.VideoWhereInput
+}
+
 export type VideoCountOrderByAggregateInput = {
   videoId?: Prisma.SortOrder
   preview?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   released?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -478,8 +437,6 @@ export type VideoCountOrderByAggregateInput = {
 }
 
 export type VideoAvgOrderByAggregateInput = {
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   views?: Prisma.SortOrder
 }
 
@@ -489,8 +446,6 @@ export type VideoMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   released?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -503,8 +458,6 @@ export type VideoMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   released?: Prisma.SortOrder
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -512,23 +465,7 @@ export type VideoMinOrderByAggregateInput = {
 }
 
 export type VideoSumOrderByAggregateInput = {
-  likes?: Prisma.SortOrder
-  dislikes?: Prisma.SortOrder
   views?: Prisma.SortOrder
-}
-
-export type VideoCreateNestedOneWithoutCommentsInput = {
-  create?: Prisma.XOR<Prisma.VideoCreateWithoutCommentsInput, Prisma.VideoUncheckedCreateWithoutCommentsInput>
-  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutCommentsInput
-  connect?: Prisma.VideoWhereUniqueInput
-}
-
-export type VideoUpdateOneRequiredWithoutCommentsNestedInput = {
-  create?: Prisma.XOR<Prisma.VideoCreateWithoutCommentsInput, Prisma.VideoUncheckedCreateWithoutCommentsInput>
-  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutCommentsInput
-  upsert?: Prisma.VideoUpsertWithoutCommentsInput
-  connect?: Prisma.VideoWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.VideoUpdateToOneWithWhereWithoutCommentsInput, Prisma.VideoUpdateWithoutCommentsInput>, Prisma.VideoUncheckedUpdateWithoutCommentsInput>
 }
 
 export type VideoCreateNestedManyWithoutCreatorInput = {
@@ -573,76 +510,32 @@ export type VideoUncheckedUpdateManyWithoutCreatorNestedInput = {
   deleteMany?: Prisma.VideoScalarWhereInput | Prisma.VideoScalarWhereInput[]
 }
 
-export type VideoCreateWithoutCommentsInput = {
-  videoId?: string
-  preview: string
-  title: string
-  description: string
-  released: Date | string
-  likes?: number
-  dislikes?: number
-  views?: number
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  creator: Prisma.ProfileCreateNestedOneWithoutVideosInput
+export type VideoCreateNestedOneWithoutCommentsInput = {
+  create?: Prisma.XOR<Prisma.VideoCreateWithoutCommentsInput, Prisma.VideoUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutCommentsInput
+  connect?: Prisma.VideoWhereUniqueInput
 }
 
-export type VideoUncheckedCreateWithoutCommentsInput = {
-  videoId?: string
-  preview: string
-  title: string
-  description: string
-  released: Date | string
-  likes?: number
-  dislikes?: number
-  views?: number
-  creatorId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
+export type VideoUpdateOneRequiredWithoutCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.VideoCreateWithoutCommentsInput, Prisma.VideoUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutCommentsInput
+  upsert?: Prisma.VideoUpsertWithoutCommentsInput
+  connect?: Prisma.VideoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VideoUpdateToOneWithWhereWithoutCommentsInput, Prisma.VideoUpdateWithoutCommentsInput>, Prisma.VideoUncheckedUpdateWithoutCommentsInput>
 }
 
-export type VideoCreateOrConnectWithoutCommentsInput = {
-  where: Prisma.VideoWhereUniqueInput
-  create: Prisma.XOR<Prisma.VideoCreateWithoutCommentsInput, Prisma.VideoUncheckedCreateWithoutCommentsInput>
+export type VideoCreateNestedOneWithoutReactionsInput = {
+  create?: Prisma.XOR<Prisma.VideoCreateWithoutReactionsInput, Prisma.VideoUncheckedCreateWithoutReactionsInput>
+  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutReactionsInput
+  connect?: Prisma.VideoWhereUniqueInput
 }
 
-export type VideoUpsertWithoutCommentsInput = {
-  update: Prisma.XOR<Prisma.VideoUpdateWithoutCommentsInput, Prisma.VideoUncheckedUpdateWithoutCommentsInput>
-  create: Prisma.XOR<Prisma.VideoCreateWithoutCommentsInput, Prisma.VideoUncheckedCreateWithoutCommentsInput>
-  where?: Prisma.VideoWhereInput
-}
-
-export type VideoUpdateToOneWithWhereWithoutCommentsInput = {
-  where?: Prisma.VideoWhereInput
-  data: Prisma.XOR<Prisma.VideoUpdateWithoutCommentsInput, Prisma.VideoUncheckedUpdateWithoutCommentsInput>
-}
-
-export type VideoUpdateWithoutCommentsInput = {
-  videoId?: Prisma.StringFieldUpdateOperationsInput | string
-  preview?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
-  views?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creator?: Prisma.ProfileUpdateOneRequiredWithoutVideosNestedInput
-}
-
-export type VideoUncheckedUpdateWithoutCommentsInput = {
-  videoId?: Prisma.StringFieldUpdateOperationsInput | string
-  preview?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
-  views?: Prisma.IntFieldUpdateOperationsInput | number
-  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+export type VideoUpdateOneRequiredWithoutReactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.VideoCreateWithoutReactionsInput, Prisma.VideoUncheckedCreateWithoutReactionsInput>
+  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutReactionsInput
+  upsert?: Prisma.VideoUpsertWithoutReactionsInput
+  connect?: Prisma.VideoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VideoUpdateToOneWithWhereWithoutReactionsInput, Prisma.VideoUpdateWithoutReactionsInput>, Prisma.VideoUncheckedUpdateWithoutReactionsInput>
 }
 
 export type VideoCreateWithoutCreatorInput = {
@@ -651,12 +544,11 @@ export type VideoCreateWithoutCreatorInput = {
   title: string
   description: string
   released: Date | string
-  likes?: number
-  dislikes?: number
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentCreateNestedManyWithoutVideoInput
+  reactions?: Prisma.ReactionCreateNestedManyWithoutVideoInput
 }
 
 export type VideoUncheckedCreateWithoutCreatorInput = {
@@ -665,12 +557,11 @@ export type VideoUncheckedCreateWithoutCreatorInput = {
   title: string
   description: string
   released: Date | string
-  likes?: number
-  dislikes?: number
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutVideoInput
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutVideoInput
 }
 
 export type VideoCreateOrConnectWithoutCreatorInput = {
@@ -708,12 +599,146 @@ export type VideoScalarWhereInput = {
   title?: Prisma.StringFilter<"Video"> | string
   description?: Prisma.StringFilter<"Video"> | string
   released?: Prisma.DateTimeFilter<"Video"> | Date | string
-  likes?: Prisma.IntFilter<"Video"> | number
-  dislikes?: Prisma.IntFilter<"Video"> | number
   views?: Prisma.IntFilter<"Video"> | number
   creatorId?: Prisma.StringFilter<"Video"> | string
   createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Video"> | Date | string
+}
+
+export type VideoCreateWithoutCommentsInput = {
+  videoId?: string
+  preview: string
+  title: string
+  description: string
+  released: Date | string
+  views?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  creator: Prisma.ChannelCreateNestedOneWithoutVideosInput
+  reactions?: Prisma.ReactionCreateNestedManyWithoutVideoInput
+}
+
+export type VideoUncheckedCreateWithoutCommentsInput = {
+  videoId?: string
+  preview: string
+  title: string
+  description: string
+  released: Date | string
+  views?: number
+  creatorId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutVideoInput
+}
+
+export type VideoCreateOrConnectWithoutCommentsInput = {
+  where: Prisma.VideoWhereUniqueInput
+  create: Prisma.XOR<Prisma.VideoCreateWithoutCommentsInput, Prisma.VideoUncheckedCreateWithoutCommentsInput>
+}
+
+export type VideoUpsertWithoutCommentsInput = {
+  update: Prisma.XOR<Prisma.VideoUpdateWithoutCommentsInput, Prisma.VideoUncheckedUpdateWithoutCommentsInput>
+  create: Prisma.XOR<Prisma.VideoCreateWithoutCommentsInput, Prisma.VideoUncheckedCreateWithoutCommentsInput>
+  where?: Prisma.VideoWhereInput
+}
+
+export type VideoUpdateToOneWithWhereWithoutCommentsInput = {
+  where?: Prisma.VideoWhereInput
+  data: Prisma.XOR<Prisma.VideoUpdateWithoutCommentsInput, Prisma.VideoUncheckedUpdateWithoutCommentsInput>
+}
+
+export type VideoUpdateWithoutCommentsInput = {
+  videoId?: Prisma.StringFieldUpdateOperationsInput | string
+  preview?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  views?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creator?: Prisma.ChannelUpdateOneRequiredWithoutVideosNestedInput
+  reactions?: Prisma.ReactionUpdateManyWithoutVideoNestedInput
+}
+
+export type VideoUncheckedUpdateWithoutCommentsInput = {
+  videoId?: Prisma.StringFieldUpdateOperationsInput | string
+  preview?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  views?: Prisma.IntFieldUpdateOperationsInput | number
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutVideoNestedInput
+}
+
+export type VideoCreateWithoutReactionsInput = {
+  videoId?: string
+  preview: string
+  title: string
+  description: string
+  released: Date | string
+  views?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  creator: Prisma.ChannelCreateNestedOneWithoutVideosInput
+  comments?: Prisma.CommentCreateNestedManyWithoutVideoInput
+}
+
+export type VideoUncheckedCreateWithoutReactionsInput = {
+  videoId?: string
+  preview: string
+  title: string
+  description: string
+  released: Date | string
+  views?: number
+  creatorId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutVideoInput
+}
+
+export type VideoCreateOrConnectWithoutReactionsInput = {
+  where: Prisma.VideoWhereUniqueInput
+  create: Prisma.XOR<Prisma.VideoCreateWithoutReactionsInput, Prisma.VideoUncheckedCreateWithoutReactionsInput>
+}
+
+export type VideoUpsertWithoutReactionsInput = {
+  update: Prisma.XOR<Prisma.VideoUpdateWithoutReactionsInput, Prisma.VideoUncheckedUpdateWithoutReactionsInput>
+  create: Prisma.XOR<Prisma.VideoCreateWithoutReactionsInput, Prisma.VideoUncheckedCreateWithoutReactionsInput>
+  where?: Prisma.VideoWhereInput
+}
+
+export type VideoUpdateToOneWithWhereWithoutReactionsInput = {
+  where?: Prisma.VideoWhereInput
+  data: Prisma.XOR<Prisma.VideoUpdateWithoutReactionsInput, Prisma.VideoUncheckedUpdateWithoutReactionsInput>
+}
+
+export type VideoUpdateWithoutReactionsInput = {
+  videoId?: Prisma.StringFieldUpdateOperationsInput | string
+  preview?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  views?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creator?: Prisma.ChannelUpdateOneRequiredWithoutVideosNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutVideoNestedInput
+}
+
+export type VideoUncheckedUpdateWithoutReactionsInput = {
+  videoId?: Prisma.StringFieldUpdateOperationsInput | string
+  preview?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  views?: Prisma.IntFieldUpdateOperationsInput | number
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutVideoNestedInput
 }
 
 export type VideoCreateManyCreatorInput = {
@@ -722,8 +747,6 @@ export type VideoCreateManyCreatorInput = {
   title: string
   description: string
   released: Date | string
-  likes?: number
-  dislikes?: number
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -735,12 +758,11 @@ export type VideoUpdateWithoutCreatorInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUpdateManyWithoutVideoNestedInput
+  reactions?: Prisma.ReactionUpdateManyWithoutVideoNestedInput
 }
 
 export type VideoUncheckedUpdateWithoutCreatorInput = {
@@ -749,12 +771,11 @@ export type VideoUncheckedUpdateWithoutCreatorInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUncheckedUpdateManyWithoutVideoNestedInput
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutVideoNestedInput
 }
 
 export type VideoUncheckedUpdateManyWithoutCreatorInput = {
@@ -763,8 +784,6 @@ export type VideoUncheckedUpdateManyWithoutCreatorInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  likes?: Prisma.IntFieldUpdateOperationsInput | number
-  dislikes?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -777,10 +796,12 @@ export type VideoUncheckedUpdateManyWithoutCreatorInput = {
 
 export type VideoCountOutputType = {
   comments: number
+  reactions: number
 }
 
 export type VideoCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   comments?: boolean | VideoCountOutputTypeCountCommentsArgs
+  reactions?: boolean | VideoCountOutputTypeCountReactionsArgs
 }
 
 /**
@@ -800,6 +821,13 @@ export type VideoCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.
   where?: Prisma.CommentWhereInput
 }
 
+/**
+ * VideoCountOutputType without action
+ */
+export type VideoCountOutputTypeCountReactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReactionWhereInput
+}
+
 
 export type VideoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   videoId?: boolean
@@ -807,14 +835,13 @@ export type VideoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   title?: boolean
   description?: boolean
   released?: boolean
-  likes?: boolean
-  dislikes?: boolean
   views?: boolean
   creatorId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  creator?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  creator?: boolean | Prisma.ChannelDefaultArgs<ExtArgs>
   comments?: boolean | Prisma.Video$commentsArgs<ExtArgs>
+  reactions?: boolean | Prisma.Video$reactionsArgs<ExtArgs>
   _count?: boolean | Prisma.VideoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["video"]>
 
@@ -824,13 +851,11 @@ export type VideoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   title?: boolean
   description?: boolean
   released?: boolean
-  likes?: boolean
-  dislikes?: boolean
   views?: boolean
   creatorId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  creator?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  creator?: boolean | Prisma.ChannelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["video"]>
 
 export type VideoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -839,13 +864,11 @@ export type VideoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   title?: boolean
   description?: boolean
   released?: boolean
-  likes?: boolean
-  dislikes?: boolean
   views?: boolean
   creatorId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  creator?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  creator?: boolean | Prisma.ChannelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["video"]>
 
 export type VideoSelectScalar = {
@@ -854,32 +877,32 @@ export type VideoSelectScalar = {
   title?: boolean
   description?: boolean
   released?: boolean
-  likes?: boolean
-  dislikes?: boolean
   views?: boolean
   creatorId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type VideoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"videoId" | "preview" | "title" | "description" | "released" | "likes" | "dislikes" | "views" | "creatorId" | "createdAt" | "updatedAt", ExtArgs["result"]["video"]>
+export type VideoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"videoId" | "preview" | "title" | "description" | "released" | "views" | "creatorId" | "createdAt" | "updatedAt", ExtArgs["result"]["video"]>
 export type VideoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  creator?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  creator?: boolean | Prisma.ChannelDefaultArgs<ExtArgs>
   comments?: boolean | Prisma.Video$commentsArgs<ExtArgs>
+  reactions?: boolean | Prisma.Video$reactionsArgs<ExtArgs>
   _count?: boolean | Prisma.VideoCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type VideoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  creator?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  creator?: boolean | Prisma.ChannelDefaultArgs<ExtArgs>
 }
 export type VideoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  creator?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  creator?: boolean | Prisma.ChannelDefaultArgs<ExtArgs>
 }
 
 export type $VideoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Video"
   objects: {
-    creator: Prisma.$ProfilePayload<ExtArgs>
+    creator: Prisma.$ChannelPayload<ExtArgs>
     comments: Prisma.$CommentPayload<ExtArgs>[]
+    reactions: Prisma.$ReactionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     videoId: string
@@ -887,8 +910,6 @@ export type $VideoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     title: string
     description: string
     released: Date
-    likes: number
-    dislikes: number
     views: number
     creatorId: string
     createdAt: Date
@@ -1287,8 +1308,9 @@ readonly fields: VideoFieldRefs;
  */
 export interface Prisma__VideoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  creator<T extends Prisma.ProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  creator<T extends Prisma.ChannelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ChannelDefaultArgs<ExtArgs>>): Prisma.Prisma__ChannelClient<runtime.Types.Result.GetResult<Prisma.$ChannelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   comments<T extends Prisma.Video$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Video$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reactions<T extends Prisma.Video$reactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Video$reactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1323,8 +1345,6 @@ export interface VideoFieldRefs {
   readonly title: Prisma.FieldRef<"Video", 'String'>
   readonly description: Prisma.FieldRef<"Video", 'String'>
   readonly released: Prisma.FieldRef<"Video", 'DateTime'>
-  readonly likes: Prisma.FieldRef<"Video", 'Int'>
-  readonly dislikes: Prisma.FieldRef<"Video", 'Int'>
   readonly views: Prisma.FieldRef<"Video", 'Int'>
   readonly creatorId: Prisma.FieldRef<"Video", 'String'>
   readonly createdAt: Prisma.FieldRef<"Video", 'DateTime'>
@@ -1751,6 +1771,30 @@ export type Video$commentsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.CommentScalarFieldEnum | Prisma.CommentScalarFieldEnum[]
+}
+
+/**
+ * Video.reactions
+ */
+export type Video$reactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Reaction
+   */
+  select?: Prisma.ReactionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Reaction
+   */
+  omit?: Prisma.ReactionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReactionInclude<ExtArgs> | null
+  where?: Prisma.ReactionWhereInput
+  orderBy?: Prisma.ReactionOrderByWithRelationInput | Prisma.ReactionOrderByWithRelationInput[]
+  cursor?: Prisma.ReactionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReactionScalarFieldEnum | Prisma.ReactionScalarFieldEnum[]
 }
 
 /**

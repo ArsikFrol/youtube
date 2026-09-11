@@ -3,9 +3,8 @@
         "dev": "next dev -p 3001",
         "build": "next build",
         "start": "next start -p 3001",
-        "seed": "tsx prisma/seed.ts",
-        "migrate": "prisma migrate deploy",
-        "generate": "prisma generate"
+        "db:all": "npx prisma migrate reset --force && npx prisma migrate dev --name rename && npx prisma generate && npx prisma db seed",
+        "db:seed": "npx prisma migrate reset --force && npx prisma db seed"
     },
     "dependencies": {
         "@prisma/adapter-pg": "^7.8.0",
