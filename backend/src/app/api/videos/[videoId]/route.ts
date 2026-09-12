@@ -1,12 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { prisma } from "../../../../lib/prisma"
-
-const CORS_HEADERS = {
-    'Access-Control-Allow-Origin': 'http://localhost:3000',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    'Access-Control-Allow-Credentials': 'true',
-}
+import { CORS_HEADERS } from "../../../../lib/cors"
 
 export async function OPTIONS() {
     return new NextResponse(null, {
@@ -89,8 +83,6 @@ export async function GET(
             })
         ])
 
-        const { subscriptions, ...createrData } = video.creator
-
         if (!video) {
             return NextResponse.json(
                 { error: "Video not found" },
@@ -98,15 +90,30 @@ export async function GET(
             )
         }
 
-        return NextResponse.json({
+        const { subscriptions, ...createrData } = video.creator
+
+        const baseRespons = {
             ...video,
 
             likes,
             disLikes,
-            reaction: reaction?.reactionType ?? null,
+            reaction: reaction?.reactionType ?? null
+        }
+
+        if (subscriptions.length > 0) return NextResponse.json({
+            ...baseRespons,
 
             isSubscription: !!subscriptions[0],
             notifications: subscriptions[0].notifications
+        }, {
+            headers: CORS_HEADERS,
+        })
+
+        return NextResponse.json({
+            ...baseRespons,
+
+            isSubscription: false,
+            notifications: null,
         }, {
             headers: CORS_HEADERS,
         })
