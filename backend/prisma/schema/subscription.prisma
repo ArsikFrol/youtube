@@ -7,7 +7,7 @@ enum Notifications {
 model Subscription {
     subscriptionId String @id @default(cuid()) @map("subscription_id")
 
-    notifications Notifications @default(ALL) @map("notifications")
+    notification Notifications @default(ALL) @map("notification")
 
     profileId String  @map("profile_id")
     profile   Profile @relation(fields: [profileId], references: [profileId], onDelete: Cascade)

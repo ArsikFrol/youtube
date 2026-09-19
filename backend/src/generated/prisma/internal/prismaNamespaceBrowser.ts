@@ -127,7 +127,7 @@ export type ReactionScalarFieldEnum = (typeof ReactionScalarFieldEnum)[keyof typ
 
 export const SubscriptionScalarFieldEnum = {
   subscriptionId: 'subscriptionId',
-  notifications: 'notifications',
+  notification: 'notification',
   profileId: 'profileId',
   channelId: 'channelId',
   createdAt: 'createdAt',

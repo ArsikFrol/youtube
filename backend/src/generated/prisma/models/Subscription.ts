@@ -26,7 +26,7 @@ export type AggregateSubscription = {
 
 export type SubscriptionMinAggregateOutputType = {
   subscriptionId: string | null
-  notifications: $Enums.Notifications | null
+  notification: $Enums.Notifications | null
   profileId: string | null
   channelId: string | null
   createdAt: Date | null
@@ -35,7 +35,7 @@ export type SubscriptionMinAggregateOutputType = {
 
 export type SubscriptionMaxAggregateOutputType = {
   subscriptionId: string | null
-  notifications: $Enums.Notifications | null
+  notification: $Enums.Notifications | null
   profileId: string | null
   channelId: string | null
   createdAt: Date | null
@@ -44,7 +44,7 @@ export type SubscriptionMaxAggregateOutputType = {
 
 export type SubscriptionCountAggregateOutputType = {
   subscriptionId: number
-  notifications: number
+  notification: number
   profileId: number
   channelId: number
   createdAt: number
@@ -55,7 +55,7 @@ export type SubscriptionCountAggregateOutputType = {
 
 export type SubscriptionMinAggregateInputType = {
   subscriptionId?: true
-  notifications?: true
+  notification?: true
   profileId?: true
   channelId?: true
   createdAt?: true
@@ -64,7 +64,7 @@ export type SubscriptionMinAggregateInputType = {
 
 export type SubscriptionMaxAggregateInputType = {
   subscriptionId?: true
-  notifications?: true
+  notification?: true
   profileId?: true
   channelId?: true
   createdAt?: true
@@ -73,7 +73,7 @@ export type SubscriptionMaxAggregateInputType = {
 
 export type SubscriptionCountAggregateInputType = {
   subscriptionId?: true
-  notifications?: true
+  notification?: true
   profileId?: true
   channelId?: true
   createdAt?: true
@@ -155,7 +155,7 @@ export type SubscriptionGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 
 export type SubscriptionGroupByOutputType = {
   subscriptionId: string
-  notifications: $Enums.Notifications
+  notification: $Enums.Notifications
   profileId: string
   channelId: string
   createdAt: Date
@@ -185,7 +185,7 @@ export type SubscriptionWhereInput = {
   OR?: Prisma.SubscriptionWhereInput[]
   NOT?: Prisma.SubscriptionWhereInput | Prisma.SubscriptionWhereInput[]
   subscriptionId?: Prisma.StringFilter<"Subscription"> | string
-  notifications?: Prisma.EnumNotificationsFilter<"Subscription"> | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFilter<"Subscription"> | $Enums.Notifications
   profileId?: Prisma.StringFilter<"Subscription"> | string
   channelId?: Prisma.StringFilter<"Subscription"> | string
   createdAt?: Prisma.DateTimeFilter<"Subscription"> | Date | string
@@ -196,7 +196,7 @@ export type SubscriptionWhereInput = {
 
 export type SubscriptionOrderByWithRelationInput = {
   subscriptionId?: Prisma.SortOrder
-  notifications?: Prisma.SortOrder
+  notification?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   channelId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -211,7 +211,7 @@ export type SubscriptionWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.SubscriptionWhereInput | Prisma.SubscriptionWhereInput[]
   OR?: Prisma.SubscriptionWhereInput[]
   NOT?: Prisma.SubscriptionWhereInput | Prisma.SubscriptionWhereInput[]
-  notifications?: Prisma.EnumNotificationsFilter<"Subscription"> | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFilter<"Subscription"> | $Enums.Notifications
   profileId?: Prisma.StringFilter<"Subscription"> | string
   channelId?: Prisma.StringFilter<"Subscription"> | string
   createdAt?: Prisma.DateTimeFilter<"Subscription"> | Date | string
@@ -222,7 +222,7 @@ export type SubscriptionWhereUniqueInput = Prisma.AtLeast<{
 
 export type SubscriptionOrderByWithAggregationInput = {
   subscriptionId?: Prisma.SortOrder
-  notifications?: Prisma.SortOrder
+  notification?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   channelId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -237,7 +237,7 @@ export type SubscriptionScalarWhereWithAggregatesInput = {
   OR?: Prisma.SubscriptionScalarWhereWithAggregatesInput[]
   NOT?: Prisma.SubscriptionScalarWhereWithAggregatesInput | Prisma.SubscriptionScalarWhereWithAggregatesInput[]
   subscriptionId?: Prisma.StringWithAggregatesFilter<"Subscription"> | string
-  notifications?: Prisma.EnumNotificationsWithAggregatesFilter<"Subscription"> | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsWithAggregatesFilter<"Subscription"> | $Enums.Notifications
   profileId?: Prisma.StringWithAggregatesFilter<"Subscription"> | string
   channelId?: Prisma.StringWithAggregatesFilter<"Subscription"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Subscription"> | Date | string
@@ -246,7 +246,7 @@ export type SubscriptionScalarWhereWithAggregatesInput = {
 
 export type SubscriptionCreateInput = {
   subscriptionId?: string
-  notifications?: $Enums.Notifications
+  notification?: $Enums.Notifications
   createdAt?: Date | string
   updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutSubscriptionsInput
@@ -255,7 +255,7 @@ export type SubscriptionCreateInput = {
 
 export type SubscriptionUncheckedCreateInput = {
   subscriptionId?: string
-  notifications?: $Enums.Notifications
+  notification?: $Enums.Notifications
   profileId: string
   channelId: string
   createdAt?: Date | string
@@ -264,7 +264,7 @@ export type SubscriptionUncheckedCreateInput = {
 
 export type SubscriptionUpdateInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSubscriptionsNestedInput
@@ -273,7 +273,7 @@ export type SubscriptionUpdateInput = {
 
 export type SubscriptionUncheckedUpdateInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   channelId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -282,7 +282,7 @@ export type SubscriptionUncheckedUpdateInput = {
 
 export type SubscriptionCreateManyInput = {
   subscriptionId?: string
-  notifications?: $Enums.Notifications
+  notification?: $Enums.Notifications
   profileId: string
   channelId: string
   createdAt?: Date | string
@@ -291,14 +291,14 @@ export type SubscriptionCreateManyInput = {
 
 export type SubscriptionUpdateManyMutationInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type SubscriptionUncheckedUpdateManyInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   channelId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -322,7 +322,7 @@ export type SubscriptionProfileIdChannelIdCompoundUniqueInput = {
 
 export type SubscriptionCountOrderByAggregateInput = {
   subscriptionId?: Prisma.SortOrder
-  notifications?: Prisma.SortOrder
+  notification?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   channelId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -331,7 +331,7 @@ export type SubscriptionCountOrderByAggregateInput = {
 
 export type SubscriptionMaxOrderByAggregateInput = {
   subscriptionId?: Prisma.SortOrder
-  notifications?: Prisma.SortOrder
+  notification?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   channelId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -340,7 +340,7 @@ export type SubscriptionMaxOrderByAggregateInput = {
 
 export type SubscriptionMinOrderByAggregateInput = {
   subscriptionId?: Prisma.SortOrder
-  notifications?: Prisma.SortOrder
+  notification?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   channelId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -437,7 +437,7 @@ export type EnumNotificationsFieldUpdateOperationsInput = {
 
 export type SubscriptionCreateWithoutChannelInput = {
   subscriptionId?: string
-  notifications?: $Enums.Notifications
+  notification?: $Enums.Notifications
   createdAt?: Date | string
   updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutSubscriptionsInput
@@ -445,7 +445,7 @@ export type SubscriptionCreateWithoutChannelInput = {
 
 export type SubscriptionUncheckedCreateWithoutChannelInput = {
   subscriptionId?: string
-  notifications?: $Enums.Notifications
+  notification?: $Enums.Notifications
   profileId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -482,7 +482,7 @@ export type SubscriptionScalarWhereInput = {
   OR?: Prisma.SubscriptionScalarWhereInput[]
   NOT?: Prisma.SubscriptionScalarWhereInput | Prisma.SubscriptionScalarWhereInput[]
   subscriptionId?: Prisma.StringFilter<"Subscription"> | string
-  notifications?: Prisma.EnumNotificationsFilter<"Subscription"> | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFilter<"Subscription"> | $Enums.Notifications
   profileId?: Prisma.StringFilter<"Subscription"> | string
   channelId?: Prisma.StringFilter<"Subscription"> | string
   createdAt?: Prisma.DateTimeFilter<"Subscription"> | Date | string
@@ -491,7 +491,7 @@ export type SubscriptionScalarWhereInput = {
 
 export type SubscriptionCreateWithoutProfileInput = {
   subscriptionId?: string
-  notifications?: $Enums.Notifications
+  notification?: $Enums.Notifications
   createdAt?: Date | string
   updatedAt?: Date | string
   channel: Prisma.ChannelCreateNestedOneWithoutSubscriptionsInput
@@ -499,7 +499,7 @@ export type SubscriptionCreateWithoutProfileInput = {
 
 export type SubscriptionUncheckedCreateWithoutProfileInput = {
   subscriptionId?: string
-  notifications?: $Enums.Notifications
+  notification?: $Enums.Notifications
   channelId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -533,7 +533,7 @@ export type SubscriptionUpdateManyWithWhereWithoutProfileInput = {
 
 export type SubscriptionCreateManyChannelInput = {
   subscriptionId?: string
-  notifications?: $Enums.Notifications
+  notification?: $Enums.Notifications
   profileId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -541,7 +541,7 @@ export type SubscriptionCreateManyChannelInput = {
 
 export type SubscriptionUpdateWithoutChannelInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSubscriptionsNestedInput
@@ -549,7 +549,7 @@ export type SubscriptionUpdateWithoutChannelInput = {
 
 export type SubscriptionUncheckedUpdateWithoutChannelInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -557,7 +557,7 @@ export type SubscriptionUncheckedUpdateWithoutChannelInput = {
 
 export type SubscriptionUncheckedUpdateManyWithoutChannelInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -565,7 +565,7 @@ export type SubscriptionUncheckedUpdateManyWithoutChannelInput = {
 
 export type SubscriptionCreateManyProfileInput = {
   subscriptionId?: string
-  notifications?: $Enums.Notifications
+  notification?: $Enums.Notifications
   channelId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -573,7 +573,7 @@ export type SubscriptionCreateManyProfileInput = {
 
 export type SubscriptionUpdateWithoutProfileInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   channel?: Prisma.ChannelUpdateOneRequiredWithoutSubscriptionsNestedInput
@@ -581,7 +581,7 @@ export type SubscriptionUpdateWithoutProfileInput = {
 
 export type SubscriptionUncheckedUpdateWithoutProfileInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   channelId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -589,7 +589,7 @@ export type SubscriptionUncheckedUpdateWithoutProfileInput = {
 
 export type SubscriptionUncheckedUpdateManyWithoutProfileInput = {
   subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
-  notifications?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
+  notification?: Prisma.EnumNotificationsFieldUpdateOperationsInput | $Enums.Notifications
   channelId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -599,7 +599,7 @@ export type SubscriptionUncheckedUpdateManyWithoutProfileInput = {
 
 export type SubscriptionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   subscriptionId?: boolean
-  notifications?: boolean
+  notification?: boolean
   profileId?: boolean
   channelId?: boolean
   createdAt?: boolean
@@ -610,7 +610,7 @@ export type SubscriptionSelect<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type SubscriptionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   subscriptionId?: boolean
-  notifications?: boolean
+  notification?: boolean
   profileId?: boolean
   channelId?: boolean
   createdAt?: boolean
@@ -621,7 +621,7 @@ export type SubscriptionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
 
 export type SubscriptionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   subscriptionId?: boolean
-  notifications?: boolean
+  notification?: boolean
   profileId?: boolean
   channelId?: boolean
   createdAt?: boolean
@@ -632,14 +632,14 @@ export type SubscriptionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
 
 export type SubscriptionSelectScalar = {
   subscriptionId?: boolean
-  notifications?: boolean
+  notification?: boolean
   profileId?: boolean
   channelId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type SubscriptionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"subscriptionId" | "notifications" | "profileId" | "channelId" | "createdAt" | "updatedAt", ExtArgs["result"]["subscription"]>
+export type SubscriptionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"subscriptionId" | "notification" | "profileId" | "channelId" | "createdAt" | "updatedAt", ExtArgs["result"]["subscription"]>
 export type SubscriptionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   channel?: boolean | Prisma.ChannelDefaultArgs<ExtArgs>
@@ -661,7 +661,7 @@ export type $SubscriptionPayload<ExtArgs extends runtime.Types.Extensions.Intern
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     subscriptionId: string
-    notifications: $Enums.Notifications
+    notification: $Enums.Notifications
     profileId: string
     channelId: string
     createdAt: Date
@@ -1092,7 +1092,7 @@ export interface Prisma__SubscriptionClient<T, Null = never, ExtArgs extends run
  */
 export interface SubscriptionFieldRefs {
   readonly subscriptionId: Prisma.FieldRef<"Subscription", 'String'>
-  readonly notifications: Prisma.FieldRef<"Subscription", 'Notifications'>
+  readonly notification: Prisma.FieldRef<"Subscription", 'Notifications'>
   readonly profileId: Prisma.FieldRef<"Subscription", 'String'>
   readonly channelId: Prisma.FieldRef<"Subscription", 'String'>
   readonly createdAt: Prisma.FieldRef<"Subscription", 'DateTime'>

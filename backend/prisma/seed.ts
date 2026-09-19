@@ -1,5 +1,5 @@
 import { prisma } from "../src/lib/prisma"
-import { channels, comments, profiles, reactions, subscriptions, videos } from "./constants"
+import { channels, comments, profiles, reactions, videos } from "./constants"
 
 async function up() {
     console.log('Начинаем заполнение базы данных...')
@@ -11,10 +11,10 @@ async function up() {
     await prisma.channel.createMany({
         data: channels
     })
-
-    await prisma.subscription.createMany({
-        data: subscriptions
-    })
+    /* 
+        await prisma.subscription.createMany({
+            data: subscriptions
+        }) */
 
     await prisma.video.createMany({
         data: videos

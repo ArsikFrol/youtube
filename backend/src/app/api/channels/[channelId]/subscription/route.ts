@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../../lib/prisma";
 import { CORS_HEADERS } from "../../../../../lib/cors";
+import { Notifications } from "../../../../../generated/prisma/enums";
 
 export async function OPTIONS() {
     return new NextResponse(null, {
@@ -28,22 +29,21 @@ export async function PATCH(
             { status: 400, headers: CORS_HEADERS }
         )
 
-        const channel = await prisma.channel.findUnique({
-            where: {
-                channelId
-            }
-        })
+        const [channel, profile] = await Promise.all([
+            prisma.channel.findUnique({
+                where: { channelId },
+                select: { channelId: true, ownerId: true }
+            }),
+            prisma.profile.findUnique({
+                where: { profileId },
+                select: { profileId: true }
+            })
+        ])
 
         if (!channel) return NextResponse.json(
             { error: `channel не найден. channelId: ${channelId}` },
             { status: 404, headers: CORS_HEADERS }
         )
-
-        const profile = await prisma.profile.findUnique({
-            where: {
-                profileId
-            }
-        })
 
         if (!profile) return NextResponse.json(
             { error: `profile не найден. profileId: ${profileId}` },
@@ -61,8 +61,14 @@ export async function PATCH(
                     profileId,
                     channelId
                 }
+            },
+            select: {
+                subscriptionId: true,
             }
         })
+
+        let subscriptionId: string | null = null
+        let notification: Notifications | null = null
 
         if (subscription) {
             await prisma.$transaction([
@@ -77,27 +83,27 @@ export async function PATCH(
                 })
             ])
         } else {
-            await prisma.$transaction([
+            const [created] = await prisma.$transaction([
                 prisma.subscription.create({
-                    data: { profileId, channelId }
+                    data: { profileId, channelId, notification: Notifications.ALL },
+                    select: { subscriptionId: true, notification: true }
                 }),
                 prisma.channel.update({
                     where: { channelId },
                     data: { subscribers: { increment: 1 } }
                 })
             ])
+
+            subscriptionId = created.subscriptionId
+            notification = created.notification
         }
 
-        const subscribers = await prisma.subscription.count({
-            where: { channelId }
-        })
-
-        const isSubscribed = !subscription
-
         return NextResponse.json({
-            isSubscribed,
-            subscribers,
-            notifications: isSubscribed ? 'ALL' : null
+            isSubscribed: !subscription,
+            subscribers: await prisma.subscription.count({ where: { channelId } }),
+
+            subscriptionId: subscriptionId,
+            notification: notification
         }, {
             headers: CORS_HEADERS
         })

@@ -9,13 +9,13 @@ export const profiles: ProfileModel[] = [
 ]
 
 export const channels: ChannelModel[] = [
-    { channelId: 'channel_1', channelName: 'Alice Vlogs', userName: 'alice_vlogs', subscribers: 4, description: 'Travel and lifestyle vlogs', logo: 'https://i.pravatar.cc/150?img=1', ownerId: 'profile_1', createdAt: new Date('2024-01-15'), updatedAt: new Date('2024-01-15') },
-    { channelId: 'channel_2', channelName: 'Bob Tech', userName: 'bob_tech', subscribers: 2, description: 'Tech reviews and tutorials', logo: 'https://i.pravatar.cc/150?img=2', ownerId: 'profile_2', createdAt: new Date('2024-02-20'), updatedAt: new Date('2024-02-20') },
-    { channelId: 'channel_3', channelName: 'Charlie Gaming', userName: 'charlie_gaming', subscribers: 5, description: 'Gaming montages and streams', logo: 'https://i.pravatar.cc/150?img=3', ownerId: 'profile_3', createdAt: new Date('2024-03-10'), updatedAt: new Date('2024-03-10') },
-    { channelId: 'channel_4', channelName: 'Diana DIY', userName: 'diana_diy', subscribers: 1, description: 'DIY projects and crafts', logo: 'https://i.pravatar.cc/150?img=4', ownerId: 'profile_4', createdAt: new Date('2024-04-05'), updatedAt: new Date('2024-04-05') },
-    { channelId: 'channel_5', channelName: 'Eve Science', userName: 'eve_science', subscribers: 3, description: 'Science experiments and facts', logo: 'https://i.pravatar.cc/150?img=5', ownerId: 'profile_5', createdAt: new Date('2024-05-12'), updatedAt: new Date('2024-05-12') }
+    { channelId: 'channel_1', channelName: 'Alice Vlogs', userName: 'alice_vlogs', subscribers: 0, description: 'Travel and lifestyle vlogs', logo: 'https://i.pravatar.cc/150?img=1', ownerId: 'profile_1', createdAt: new Date('2024-01-15'), updatedAt: new Date('2024-01-15') },
+    { channelId: 'channel_2', channelName: 'Bob Tech', userName: 'bob_tech', subscribers: 0, description: 'Tech reviews and tutorials', logo: 'https://i.pravatar.cc/150?img=2', ownerId: 'profile_2', createdAt: new Date('2024-02-20'), updatedAt: new Date('2024-02-20') },
+    { channelId: 'channel_3', channelName: 'Charlie Gaming', userName: 'charlie_gaming', subscribers: 0, description: 'Gaming montages and streams', logo: 'https://i.pravatar.cc/150?img=3', ownerId: 'profile_3', createdAt: new Date('2024-03-10'), updatedAt: new Date('2024-03-10') },
+    { channelId: 'channel_4', channelName: 'Diana DIY', userName: 'diana_diy', subscribers: 0, description: 'DIY projects and crafts', logo: 'https://i.pravatar.cc/150?img=4', ownerId: 'profile_4', createdAt: new Date('2024-04-05'), updatedAt: new Date('2024-04-05') },
+    { channelId: 'channel_5', channelName: 'Eve Science', userName: 'eve_science', subscribers: 0, description: 'Science experiments and facts', logo: 'https://i.pravatar.cc/150?img=5', ownerId: 'profile_5', createdAt: new Date('2024-05-12'), updatedAt: new Date('2024-05-12') }
 ]
-
+/* 
 export const subscriptions: SubscriptionModel[] = [
     { subscriptionId: 'sub_1', profileId: 'profile_2', channelId: 'channel_1', notifications: 'ALL', createdAt: new Date('2024-01-16'), updatedAt: new Date('2024-01-16') },
     { subscriptionId: 'sub_2', profileId: 'profile_3', channelId: 'channel_1', notifications: 'ALL', createdAt: new Date('2024-01-17'), updatedAt: new Date('2024-01-17') },
@@ -32,7 +32,7 @@ export const subscriptions: SubscriptionModel[] = [
     { subscriptionId: 'sub_13', profileId: 'profile_1', channelId: 'channel_5', notifications: 'PERSONALIZED', createdAt: new Date('2024-05-13'), updatedAt: new Date('2024-05-13') },
     { subscriptionId: 'sub_14', profileId: 'profile_2', channelId: 'channel_5', notifications: 'ALL', createdAt: new Date('2024-05-14'), updatedAt: new Date('2024-05-14') },
     { subscriptionId: 'sub_15', profileId: 'profile_4', channelId: 'channel_5', notifications: 'NONE', createdAt: new Date('2024-05-15'), updatedAt: new Date('2024-05-15') },
-]
+] */
 
 export const videos: VideoModel[] = [
     { videoId: 'video_1', preview: 'https://picsum.photos/seed/1/640/360', title: 'Amazing Sunset', description: 'Beautiful sunset over the ocean', released: new Date('2024-01-20'), views: 1200, creatorId: 'channel_1', createdAt: new Date('2024-01-20'), updatedAt: new Date('2024-01-20') },

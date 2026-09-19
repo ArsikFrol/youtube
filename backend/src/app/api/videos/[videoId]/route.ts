@@ -30,25 +30,23 @@ export async function GET(
         const [video, likes, disLikes, reaction] = await Promise.all([
             prisma.video.findUnique({
                 where: { videoId },
-                include: {
+                select: {
+                    description: true,
+                    preview: true,
+                    released: true,
+                    views: true,
+                    videoId: true,
+                    title: true,
                     creator: {
                         select: {
                             channelId: true,
-                            subscribers: true,
                             channelName: true,
-                            description: true,
-                            logo: true,
-                            userName: true,
-                            createdAt: true,
+                            subscribers: true,
                             subscriptions: {
                                 where: { profileId },
                                 select: {
-                                    notifications: true,
-                                    profile: {
-                                        select: {
-                                            profileName: true,
-                                        }
-                                    }
+                                    notification: true,
+                                    subscriptionId: true,
                                 }
                             }
                         },
@@ -67,7 +65,7 @@ export async function GET(
                             }
                         }
                     },
-                }
+                },
             }),
             prisma.reaction.count({
                 where: { videoId, reactionType: 'LIKE' }
@@ -103,8 +101,11 @@ export async function GET(
         if (subscriptions.length > 0) return NextResponse.json({
             ...baseRespons,
 
-            isSubscription: !!subscriptions[0],
-            notifications: subscriptions[0].notifications
+            subscription: {
+                isSubscribed: !!subscriptions[0],
+                notification: subscriptions[0].notification,
+                subscriptionId: subscriptions[0].subscriptionId
+            }
         }, {
             headers: CORS_HEADERS,
         })
@@ -112,8 +113,11 @@ export async function GET(
         return NextResponse.json({
             ...baseRespons,
 
-            isSubscription: false,
-            notifications: null,
+            subscription: {
+                isSubscribed: false,
+                notification: null,
+                subscriptionId: null
+            }
         }, {
             headers: CORS_HEADERS,
         })
