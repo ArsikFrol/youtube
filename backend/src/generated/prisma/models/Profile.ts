@@ -28,6 +28,7 @@ export type ProfileMinAggregateOutputType = {
   profileId: string | null
   avatar: string | null
   profileName: string | null
+  userName: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -36,6 +37,7 @@ export type ProfileMaxAggregateOutputType = {
   profileId: string | null
   avatar: string | null
   profileName: string | null
+  userName: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -44,6 +46,7 @@ export type ProfileCountAggregateOutputType = {
   profileId: number
   avatar: number
   profileName: number
+  userName: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -54,6 +57,7 @@ export type ProfileMinAggregateInputType = {
   profileId?: true
   avatar?: true
   profileName?: true
+  userName?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -62,6 +66,7 @@ export type ProfileMaxAggregateInputType = {
   profileId?: true
   avatar?: true
   profileName?: true
+  userName?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -70,6 +75,7 @@ export type ProfileCountAggregateInputType = {
   profileId?: true
   avatar?: true
   profileName?: true
+  userName?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -151,6 +157,7 @@ export type ProfileGroupByOutputType = {
   profileId: string
   avatar: string
   profileName: string
+  userName: string
   createdAt: Date
   updatedAt: Date
   _count: ProfileCountAggregateOutputType | null
@@ -180,6 +187,7 @@ export type ProfileWhereInput = {
   profileId?: Prisma.StringFilter<"Profile"> | string
   avatar?: Prisma.StringFilter<"Profile"> | string
   profileName?: Prisma.StringFilter<"Profile"> | string
+  userName?: Prisma.StringFilter<"Profile"> | string
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   reactions?: Prisma.ReactionListRelationFilter
@@ -192,6 +200,7 @@ export type ProfileOrderByWithRelationInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
+  userName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   reactions?: Prisma.ReactionOrderByRelationAggregateInput
@@ -202,6 +211,7 @@ export type ProfileOrderByWithRelationInput = {
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   profileId?: string
+  userName?: string
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
@@ -213,12 +223,13 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   comments?: Prisma.CommentListRelationFilter
   channel?: Prisma.XOR<Prisma.ChannelNullableScalarRelationFilter, Prisma.ChannelWhereInput> | null
   subscriptions?: Prisma.SubscriptionListRelationFilter
-}, "profileId">
+}, "profileId" | "userName">
 
 export type ProfileOrderByWithAggregationInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
+  userName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ProfileCountOrderByAggregateInput
@@ -233,6 +244,7 @@ export type ProfileScalarWhereWithAggregatesInput = {
   profileId?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   avatar?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   profileName?: Prisma.StringWithAggregatesFilter<"Profile"> | string
+  userName?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Profile"> | Date | string
 }
@@ -241,6 +253,7 @@ export type ProfileCreateInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   reactions?: Prisma.ReactionCreateNestedManyWithoutProfileInput
@@ -253,6 +266,7 @@ export type ProfileUncheckedCreateInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutProfileInput
@@ -265,6 +279,7 @@ export type ProfileUpdateInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reactions?: Prisma.ReactionUpdateManyWithoutProfileNestedInput
@@ -277,6 +292,7 @@ export type ProfileUncheckedUpdateInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutProfileNestedInput
@@ -289,6 +305,7 @@ export type ProfileCreateManyInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -297,6 +314,7 @@ export type ProfileUpdateManyMutationInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -305,6 +323,7 @@ export type ProfileUncheckedUpdateManyInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -318,6 +337,7 @@ export type ProfileCountOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
+  userName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -326,6 +346,7 @@ export type ProfileMaxOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
+  userName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -334,6 +355,7 @@ export type ProfileMinOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   profileName?: Prisma.SortOrder
+  userName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -398,6 +420,7 @@ export type ProfileCreateWithoutChannelInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   reactions?: Prisma.ReactionCreateNestedManyWithoutProfileInput
@@ -409,6 +432,7 @@ export type ProfileUncheckedCreateWithoutChannelInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutProfileInput
@@ -436,6 +460,7 @@ export type ProfileUpdateWithoutChannelInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reactions?: Prisma.ReactionUpdateManyWithoutProfileNestedInput
@@ -447,6 +472,7 @@ export type ProfileUncheckedUpdateWithoutChannelInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutProfileNestedInput
@@ -458,6 +484,7 @@ export type ProfileCreateWithoutCommentsInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   reactions?: Prisma.ReactionCreateNestedManyWithoutProfileInput
@@ -469,6 +496,7 @@ export type ProfileUncheckedCreateWithoutCommentsInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutProfileInput
@@ -496,6 +524,7 @@ export type ProfileUpdateWithoutCommentsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reactions?: Prisma.ReactionUpdateManyWithoutProfileNestedInput
@@ -507,6 +536,7 @@ export type ProfileUncheckedUpdateWithoutCommentsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutProfileNestedInput
@@ -518,6 +548,7 @@ export type ProfileCreateWithoutReactionsInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentCreateNestedManyWithoutWriterInput
@@ -529,6 +560,7 @@ export type ProfileUncheckedCreateWithoutReactionsInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutWriterInput
@@ -556,6 +588,7 @@ export type ProfileUpdateWithoutReactionsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUpdateManyWithoutWriterNestedInput
@@ -567,6 +600,7 @@ export type ProfileUncheckedUpdateWithoutReactionsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUncheckedUpdateManyWithoutWriterNestedInput
@@ -578,6 +612,7 @@ export type ProfileCreateWithoutSubscriptionsInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   reactions?: Prisma.ReactionCreateNestedManyWithoutProfileInput
@@ -589,6 +624,7 @@ export type ProfileUncheckedCreateWithoutSubscriptionsInput = {
   profileId?: string
   avatar: string
   profileName: string
+  userName: string
   createdAt?: Date | string
   updatedAt?: Date | string
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutProfileInput
@@ -616,6 +652,7 @@ export type ProfileUpdateWithoutSubscriptionsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reactions?: Prisma.ReactionUpdateManyWithoutProfileNestedInput
@@ -627,6 +664,7 @@ export type ProfileUncheckedUpdateWithoutSubscriptionsInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   profileName?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutProfileNestedInput
@@ -687,6 +725,7 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   profileId?: boolean
   avatar?: boolean
   profileName?: boolean
+  userName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   reactions?: boolean | Prisma.Profile$reactionsArgs<ExtArgs>
@@ -700,6 +739,7 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   profileId?: boolean
   avatar?: boolean
   profileName?: boolean
+  userName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["profile"]>
@@ -708,6 +748,7 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   profileId?: boolean
   avatar?: boolean
   profileName?: boolean
+  userName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["profile"]>
@@ -716,11 +757,12 @@ export type ProfileSelectScalar = {
   profileId?: boolean
   avatar?: boolean
   profileName?: boolean
+  userName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"profileId" | "avatar" | "profileName" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"profileId" | "avatar" | "profileName" | "userName" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   reactions?: boolean | Prisma.Profile$reactionsArgs<ExtArgs>
   comments?: boolean | Prisma.Profile$commentsArgs<ExtArgs>
@@ -743,6 +785,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     profileId: string
     avatar: string
     profileName: string
+    userName: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["profile"]>
@@ -1175,6 +1218,7 @@ export interface ProfileFieldRefs {
   readonly profileId: Prisma.FieldRef<"Profile", 'String'>
   readonly avatar: Prisma.FieldRef<"Profile", 'String'>
   readonly profileName: Prisma.FieldRef<"Profile", 'String'>
+  readonly userName: Prisma.FieldRef<"Profile", 'String'>
   readonly createdAt: Prisma.FieldRef<"Profile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Profile", 'DateTime'>
 }

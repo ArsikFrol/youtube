@@ -4,7 +4,6 @@ model Video {
     preview     String
     title       String
     description String
-    released    DateTime
 
     views Int @default(0)
 

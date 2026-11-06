@@ -4,6 +4,8 @@ model Profile {
     avatar      String
     profileName String @map("profile_name")
 
+    userName String @unique @map("user_name")
+
     reactions     Reaction[]
     comments      Comment[]
     channel       Channel?

@@ -39,7 +39,6 @@ export type VideoMinAggregateOutputType = {
   preview: string | null
   title: string | null
   description: string | null
-  released: Date | null
   views: number | null
   creatorId: string | null
   createdAt: Date | null
@@ -51,7 +50,6 @@ export type VideoMaxAggregateOutputType = {
   preview: string | null
   title: string | null
   description: string | null
-  released: Date | null
   views: number | null
   creatorId: string | null
   createdAt: Date | null
@@ -63,7 +61,6 @@ export type VideoCountAggregateOutputType = {
   preview: number
   title: number
   description: number
-  released: number
   views: number
   creatorId: number
   createdAt: number
@@ -85,7 +82,6 @@ export type VideoMinAggregateInputType = {
   preview?: true
   title?: true
   description?: true
-  released?: true
   views?: true
   creatorId?: true
   createdAt?: true
@@ -97,7 +93,6 @@ export type VideoMaxAggregateInputType = {
   preview?: true
   title?: true
   description?: true
-  released?: true
   views?: true
   creatorId?: true
   createdAt?: true
@@ -109,7 +104,6 @@ export type VideoCountAggregateInputType = {
   preview?: true
   title?: true
   description?: true
-  released?: true
   views?: true
   creatorId?: true
   createdAt?: true
@@ -208,7 +202,6 @@ export type VideoGroupByOutputType = {
   preview: string
   title: string
   description: string
-  released: Date
   views: number
   creatorId: string
   createdAt: Date
@@ -243,7 +236,6 @@ export type VideoWhereInput = {
   preview?: Prisma.StringFilter<"Video"> | string
   title?: Prisma.StringFilter<"Video"> | string
   description?: Prisma.StringFilter<"Video"> | string
-  released?: Prisma.DateTimeFilter<"Video"> | Date | string
   views?: Prisma.IntFilter<"Video"> | number
   creatorId?: Prisma.StringFilter<"Video"> | string
   createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
@@ -258,7 +250,6 @@ export type VideoOrderByWithRelationInput = {
   preview?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  released?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -276,7 +267,6 @@ export type VideoWhereUniqueInput = Prisma.AtLeast<{
   preview?: Prisma.StringFilter<"Video"> | string
   title?: Prisma.StringFilter<"Video"> | string
   description?: Prisma.StringFilter<"Video"> | string
-  released?: Prisma.DateTimeFilter<"Video"> | Date | string
   views?: Prisma.IntFilter<"Video"> | number
   creatorId?: Prisma.StringFilter<"Video"> | string
   createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
@@ -291,7 +281,6 @@ export type VideoOrderByWithAggregationInput = {
   preview?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  released?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -311,7 +300,6 @@ export type VideoScalarWhereWithAggregatesInput = {
   preview?: Prisma.StringWithAggregatesFilter<"Video"> | string
   title?: Prisma.StringWithAggregatesFilter<"Video"> | string
   description?: Prisma.StringWithAggregatesFilter<"Video"> | string
-  released?: Prisma.DateTimeWithAggregatesFilter<"Video"> | Date | string
   views?: Prisma.IntWithAggregatesFilter<"Video"> | number
   creatorId?: Prisma.StringWithAggregatesFilter<"Video"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Video"> | Date | string
@@ -323,7 +311,6 @@ export type VideoCreateInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -337,7 +324,6 @@ export type VideoUncheckedCreateInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   creatorId: string
   createdAt?: Date | string
@@ -351,7 +337,6 @@ export type VideoUpdateInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -365,7 +350,6 @@ export type VideoUncheckedUpdateInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -379,7 +363,6 @@ export type VideoCreateManyInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   creatorId: string
   createdAt?: Date | string
@@ -391,7 +374,6 @@ export type VideoUpdateManyMutationInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -402,7 +384,6 @@ export type VideoUncheckedUpdateManyInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -429,7 +410,6 @@ export type VideoCountOrderByAggregateInput = {
   preview?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  released?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -445,7 +425,6 @@ export type VideoMaxOrderByAggregateInput = {
   preview?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  released?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -457,7 +436,6 @@ export type VideoMinOrderByAggregateInput = {
   preview?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  released?: Prisma.SortOrder
   views?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -543,7 +521,6 @@ export type VideoCreateWithoutCreatorInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -556,7 +533,6 @@ export type VideoUncheckedCreateWithoutCreatorInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -598,7 +574,6 @@ export type VideoScalarWhereInput = {
   preview?: Prisma.StringFilter<"Video"> | string
   title?: Prisma.StringFilter<"Video"> | string
   description?: Prisma.StringFilter<"Video"> | string
-  released?: Prisma.DateTimeFilter<"Video"> | Date | string
   views?: Prisma.IntFilter<"Video"> | number
   creatorId?: Prisma.StringFilter<"Video"> | string
   createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
@@ -610,7 +585,6 @@ export type VideoCreateWithoutCommentsInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -623,7 +597,6 @@ export type VideoUncheckedCreateWithoutCommentsInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   creatorId: string
   createdAt?: Date | string
@@ -652,7 +625,6 @@ export type VideoUpdateWithoutCommentsInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -665,7 +637,6 @@ export type VideoUncheckedUpdateWithoutCommentsInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -678,7 +649,6 @@ export type VideoCreateWithoutReactionsInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -691,7 +661,6 @@ export type VideoUncheckedCreateWithoutReactionsInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   creatorId: string
   createdAt?: Date | string
@@ -720,7 +689,6 @@ export type VideoUpdateWithoutReactionsInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -733,7 +701,6 @@ export type VideoUncheckedUpdateWithoutReactionsInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -746,7 +713,6 @@ export type VideoCreateManyCreatorInput = {
   preview: string
   title: string
   description: string
-  released: Date | string
   views?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -757,7 +723,6 @@ export type VideoUpdateWithoutCreatorInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -770,7 +735,6 @@ export type VideoUncheckedUpdateWithoutCreatorInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -783,7 +747,6 @@ export type VideoUncheckedUpdateManyWithoutCreatorInput = {
   preview?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  released?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   views?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -834,7 +797,6 @@ export type VideoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   preview?: boolean
   title?: boolean
   description?: boolean
-  released?: boolean
   views?: boolean
   creatorId?: boolean
   createdAt?: boolean
@@ -850,7 +812,6 @@ export type VideoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   preview?: boolean
   title?: boolean
   description?: boolean
-  released?: boolean
   views?: boolean
   creatorId?: boolean
   createdAt?: boolean
@@ -863,7 +824,6 @@ export type VideoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   preview?: boolean
   title?: boolean
   description?: boolean
-  released?: boolean
   views?: boolean
   creatorId?: boolean
   createdAt?: boolean
@@ -876,14 +836,13 @@ export type VideoSelectScalar = {
   preview?: boolean
   title?: boolean
   description?: boolean
-  released?: boolean
   views?: boolean
   creatorId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type VideoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"videoId" | "preview" | "title" | "description" | "released" | "views" | "creatorId" | "createdAt" | "updatedAt", ExtArgs["result"]["video"]>
+export type VideoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"videoId" | "preview" | "title" | "description" | "views" | "creatorId" | "createdAt" | "updatedAt", ExtArgs["result"]["video"]>
 export type VideoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.ChannelDefaultArgs<ExtArgs>
   comments?: boolean | Prisma.Video$commentsArgs<ExtArgs>
@@ -909,7 +868,6 @@ export type $VideoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     preview: string
     title: string
     description: string
-    released: Date
     views: number
     creatorId: string
     createdAt: Date
@@ -1344,7 +1302,6 @@ export interface VideoFieldRefs {
   readonly preview: Prisma.FieldRef<"Video", 'String'>
   readonly title: Prisma.FieldRef<"Video", 'String'>
   readonly description: Prisma.FieldRef<"Video", 'String'>
-  readonly released: Prisma.FieldRef<"Video", 'DateTime'>
   readonly views: Prisma.FieldRef<"Video", 'Int'>
   readonly creatorId: Prisma.FieldRef<"Video", 'String'>
   readonly createdAt: Prisma.FieldRef<"Video", 'DateTime'>

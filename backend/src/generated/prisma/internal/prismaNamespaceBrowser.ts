@@ -55,6 +55,7 @@ export const ModelName = {
   Comment: 'Comment',
   Profile: 'Profile',
   Reaction: 'Reaction',
+  Search: 'Search',
   Subscription: 'Subscription',
   Video: 'Video'
 } as const
@@ -106,6 +107,7 @@ export const ProfileScalarFieldEnum = {
   profileId: 'profileId',
   avatar: 'avatar',
   profileName: 'profileName',
+  userName: 'userName',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -125,6 +127,18 @@ export const ReactionScalarFieldEnum = {
 export type ReactionScalarFieldEnum = (typeof ReactionScalarFieldEnum)[keyof typeof ReactionScalarFieldEnum]
 
 
+export const SearchScalarFieldEnum = {
+  searchId: 'searchId',
+  name: 'name',
+  image: 'image',
+  rating: 'rating',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SearchScalarFieldEnum = (typeof SearchScalarFieldEnum)[keyof typeof SearchScalarFieldEnum]
+
+
 export const SubscriptionScalarFieldEnum = {
   subscriptionId: 'subscriptionId',
   notification: 'notification',
@@ -142,7 +156,6 @@ export const VideoScalarFieldEnum = {
   preview: 'preview',
   title: 'title',
   description: 'description',
-  released: 'released',
   views: 'views',
   creatorId: 'creatorId',
   createdAt: 'createdAt',

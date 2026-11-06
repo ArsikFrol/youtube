@@ -401,6 +401,7 @@ export const ModelName = {
   Comment: 'Comment',
   Profile: 'Profile',
   Reaction: 'Reaction',
+  Search: 'Search',
   Subscription: 'Subscription',
   Video: 'Video'
 } as const
@@ -418,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "channel" | "comment" | "profile" | "reaction" | "subscription" | "video"
+    modelProps: "channel" | "comment" | "profile" | "reaction" | "search" | "subscription" | "video"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -718,6 +719,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Search: {
+      payload: Prisma.$SearchPayload<ExtArgs>
+      fields: Prisma.SearchFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SearchFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SearchFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload>
+        }
+        findFirst: {
+          args: Prisma.SearchFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SearchFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload>
+        }
+        findMany: {
+          args: Prisma.SearchFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload>[]
+        }
+        create: {
+          args: Prisma.SearchCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload>
+        }
+        createMany: {
+          args: Prisma.SearchCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SearchCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload>[]
+        }
+        delete: {
+          args: Prisma.SearchDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload>
+        }
+        update: {
+          args: Prisma.SearchUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload>
+        }
+        deleteMany: {
+          args: Prisma.SearchDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SearchUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SearchUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload>[]
+        }
+        upsert: {
+          args: Prisma.SearchUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SearchPayload>
+        }
+        aggregate: {
+          args: Prisma.SearchAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSearch>
+        }
+        groupBy: {
+          args: Prisma.SearchGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SearchGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SearchCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SearchCountAggregateOutputType> | number
+        }
+      }
+    }
     Subscription: {
       payload: Prisma.$SubscriptionPayload<ExtArgs>
       fields: Prisma.SubscriptionFieldRefs
@@ -936,6 +1011,7 @@ export const ProfileScalarFieldEnum = {
   profileId: 'profileId',
   avatar: 'avatar',
   profileName: 'profileName',
+  userName: 'userName',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -955,6 +1031,18 @@ export const ReactionScalarFieldEnum = {
 export type ReactionScalarFieldEnum = (typeof ReactionScalarFieldEnum)[keyof typeof ReactionScalarFieldEnum]
 
 
+export const SearchScalarFieldEnum = {
+  searchId: 'searchId',
+  name: 'name',
+  image: 'image',
+  rating: 'rating',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SearchScalarFieldEnum = (typeof SearchScalarFieldEnum)[keyof typeof SearchScalarFieldEnum]
+
+
 export const SubscriptionScalarFieldEnum = {
   subscriptionId: 'subscriptionId',
   notification: 'notification',
@@ -972,7 +1060,6 @@ export const VideoScalarFieldEnum = {
   preview: 'preview',
   title: 'title',
   description: 'description',
-  released: 'released',
   views: 'views',
   creatorId: 'creatorId',
   createdAt: 'createdAt',
@@ -1242,6 +1329,7 @@ export type GlobalOmitConfig = {
   comment?: Prisma.CommentOmit
   profile?: Prisma.ProfileOmit
   reaction?: Prisma.ReactionOmit
+  search?: Prisma.SearchOmit
   subscription?: Prisma.SubscriptionOmit
   video?: Prisma.VideoOmit
 }

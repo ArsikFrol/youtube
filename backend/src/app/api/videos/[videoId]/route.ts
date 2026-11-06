@@ -33,7 +33,6 @@ export async function GET(
                 select: {
                     description: true,
                     preview: true,
-                    released: true,
                     views: true,
                     videoId: true,
                     title: true,

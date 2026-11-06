@@ -38,6 +38,11 @@ export type Profile = Prisma.ProfileModel
  */
 export type Reaction = Prisma.ReactionModel
 /**
+ * Model Search
+ * 
+ */
+export type Search = Prisma.SearchModel
+/**
  * Model Subscription
  * 
  */

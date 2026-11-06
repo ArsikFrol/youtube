@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import { prisma } from "../../../lib/prisma";
 import { CORS_HEADERS } from "../../../lib/cors";
 
@@ -9,13 +10,45 @@ export async function OPTIONS() {
     })
 }
 
-export async function GET(req: NextRequest) {
+export async function GET(
+    req: NextRequest
+) {
     try {
 
+        const search = req.nextUrl.searchParams.get('search') ?? ''
+
+        if (search.trim().length) {
+
+            const listVideos = await prisma.video.findMany({
+                orderBy: { createdAt: 'desc' },
+                include: {
+                    creator: {
+                        select: {
+                            channelId: true,
+                            subscribers: true,
+                            channelName: true,
+                            description: true,
+                            logo: true,
+                            userName: true,
+                            createdAt: true
+                        }
+                    }
+                }
+            })
+
+            return NextResponse.json(listVideos, {
+                headers: CORS_HEADERS,
+            })
+        }
+
         const listVideos = await prisma.video.findMany({
-            orderBy: {
-                released: 'desc'
+            where: {
+                OR: [
+                    { title: { contains: search, mode: 'insensitive' } },
+                    { description: { contains: search, mode: 'insensitive' } }
+                ]
             },
+            orderBy: { createdAt: 'desc' },
             include: {
                 creator: {
                     select: {
